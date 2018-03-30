@@ -1,3 +1,4 @@
+<!doctype html>
 <?php
 
 	session_start();
@@ -9,4 +10,7 @@
 
 ?>
 
+<html>
+	
 <h2> You have logged in!</h2>
+</html>
