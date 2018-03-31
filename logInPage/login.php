@@ -114,6 +114,8 @@
 		<!-- <h2 align="center" >Login Form</h2> -->
 
 		<form name="login_form" method="POST">
+		<h1 align="center">Login</h1>
+
 		  <div class="imgcontainer">
 			<img src="raspberrylogo.png" alt="Avatar" class="avatar">
 		  </div>
@@ -132,8 +134,8 @@
 		  </div>
 
 		  <div class="container" style="background-color:#f1f1f1">
-			<button type="button" class="cancelbtn">Cancel</button>
-			<span class="psw">Forgot <a href="#">password?</a></span>
+			<p>Need an account? <a href="register.php">Sign up!</a></p>
+			<!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
 		  </div>
 		</form>
 	</div>

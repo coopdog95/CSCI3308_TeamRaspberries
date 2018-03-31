@@ -233,10 +233,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						<label for="email"><b>Email</b></label>
 						<input type="email" placeholder="Enter email address" name="email" required>
 						<button type="submit">Sign up!</button>
-						<p>Already have an account? <a href="login.php">Sign in.</a></p>
+
 
 					</form>
 			</div>
+			<div class="container" style="background-color:#f1f1f1">
+							<p>Already have an account? <a href="login.php">Sign in.</a></p>
+							<!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+						</div>
+
 		</div>
 	</body>
 </html>
