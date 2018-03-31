@@ -1,12 +1,11 @@
 <?php
 
 	session_start();
-
-	if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
-		header("Location: index.php");
+	if(!$_SESSION['LoginInfo'])
+	{
+		header("Location: login.php");
 	}
-
 
 ?>
 
-<h2> You have logged in!</h2>
+<h1> You have been authenticated! </h1>
