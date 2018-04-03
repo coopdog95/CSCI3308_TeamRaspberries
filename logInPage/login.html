@@ -3,6 +3,16 @@
 <?php
 
 	session_start();
+	$servername = "localhost";
+	$username = "root";
+	$password = "charley";
+
+	conn = mysqli_connect($servername, $username, $password);
+
+	if(!conn) {
+		die("Connection Failed: " . mysqli_connect_error());
+	}
+	echo "Connected successfully";
 
 	if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
 		header("Location: success.php");
@@ -87,7 +97,7 @@
 	</head>
 	<body>
 	  <div style="width:80%;margin-left:auto;margin-right:auto;">
-		<!-- <h2 align="center" >Login Form</h2> -->
+		<h1 align="center" >Login</h2>
 
 		<form name="login_form" action="/action_page.php">
 		  <div class="imgcontainer">
