@@ -29,8 +29,7 @@
 
 			session_start();
 			$_SESSION['LoginInfo'] = 'true';
-			header("Location: success.php");
-			echo "Hey it works";
+			header("Location: index.html");
 
 		}
 		else {
