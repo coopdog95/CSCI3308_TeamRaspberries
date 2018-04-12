@@ -40,7 +40,7 @@
     </style>
     <script src="dynamicPlot.js"></script>
   </head>
-  <body style="overflow: auto;">
+  <body style="overflow: hidden;">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -137,7 +137,7 @@
           <input type="checkbox" checked data-toggle="toggle" data-on="Drop<br>Pins" data-off="Stop<br>Droping" data-style="slow">
         </div> -->
       <!-- this is the actual map portion of the sight  -->
-    <div id="map" style="height: 500px">
+    <div id="map" style="bottom: 0; position: absolute; max-height: 50%; width: 100%">
       <script>
         // In the following example, markers appear when the user clicks on the map.
         // The markers are stored in an array.
