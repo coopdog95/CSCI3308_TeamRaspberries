@@ -1,10 +1,8 @@
 window.onload = function () {
-    //var tmp = new Date();
-    //var tmpTime = tmp.getTime();
   var dataPoints = [{y : 10}];
   var chart = new CanvasJS.Chart("chartContainer", {
       title : {
-        text: " "
+        text: "DATA F@#K YEAH" //CHANGE THIS
       },
       axisX:{
         title: "Time",
@@ -45,7 +43,7 @@ window.onload = function () {
     var day = d.getDate();
     var year = d.getFullYear();
     var hour = d.getHours();
-    var min = d.getMinutes();
+    var min = (d.getMinutes() < '10') ? ('0' + d.getMinutes()) : d.getMinutes();
     var sec = (d.getSeconds() < '10') ? ('0' + d.getSeconds()) : d.getSeconds();
     //var time = d.getTime();
     
