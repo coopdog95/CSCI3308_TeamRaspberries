@@ -73,6 +73,8 @@ window.onload = function () {
   setInterval(function(){updateChart()}, 1000);
 }
 
+
+////Global definition of updateChart, callable from anywhere in home.php
 // var updateChart = function(yVal){
 
 //     var d = new Date();

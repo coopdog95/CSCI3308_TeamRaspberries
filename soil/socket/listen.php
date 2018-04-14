@@ -28,8 +28,12 @@
 		with the appropriate sensorID, while also sending it to
 		the webpage of the user that is associated with this sensorID
 		*/
+
+
+		//Any data from sensor1 triggers 'from S1' event
 		$Incoming->on('from S1', function($data)use($ServerSideSocket){
 			echo "Got data\n";
+			//Once triggered, we emit the event 'to C1' to the web browser
 			$ServerSideSocket->emit("to C1", $data);
 		});
 

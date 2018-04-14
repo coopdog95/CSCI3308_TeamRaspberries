@@ -39,13 +39,18 @@
       }
     </style>
     <script src="/javascript/socket.io.js"></script>
-    <script> 
+    <script src="/javascript/dynamicPlot.js"></script>
+        <script> 
 
       //I commented this out so it won't
       //open a socket everytime you 
       //connect while develeloping
 
-      //depends on the above socket.io.js file
+      //requires the above socket.io.js file
+      //and dynamicPlot.js's updateChart() 
+      //function
+
+      //Port for the stream to connect
       // var streamSocket = io("http://0.0.0.0:3006");
 
       // //Initial connection
@@ -53,15 +58,15 @@
       //   console.log("CLIENT: Successfully connected to port 3002");
       //   });
 
-      // //Accept stream
+      // //Ready to accept data on the event "to C1"
       // streamSocket.on("to C1", function(data){
       //   console.log("CLIENT: data received: ", data);
+      //   //Update chart with last bit of stream
       //   updateChart(data);
       // })
 
 
     </script>
-    <script src="/javascript/dynamicPlot.js"></script>
   </head>
   <body style="overflow: hidden;">
     <!-- Navigation -->
