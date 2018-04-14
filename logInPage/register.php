@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username_err = "Please enter a username.";
     } else{
         // Prepare a select statement
-        $sql = "SELECT id FROM LoginInfo WHERE username = ?";
+        $sql = "SELECT userID FROM LoginInfo WHERE username = ?";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -50,8 +50,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username = trim($_POST["username"]);
                 }
             } else{
+	            $username_err = "Some username related error 1.";
                 echo "Oops! Something went wrong. Please try again later.";
             }
+        }
+        else{
+            $username_err = "Some username related error 2.";
         }
 
         // Close statement
@@ -192,9 +196,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<h1 align="center">Registration</h1>
 
 			<div class="imgcontainer">
-				<img src="raspberrylogo.png" alt="Avatar" class="avatar">
+				<img src="resources/raspberrylogo.png" alt="Avatar" class="avatar">
 			</div>
-			<div class="container" action="/login.php" style="width:45%;margin-left:auto;margin-right:auto;">
+			<div class="container" action="/index.php" style="width:45%;margin-left:auto;margin-right:auto;">
 						<!-- firstName -->
 						<div class="form-group <?php echo (!empty($fn_err)) ? 'has-error' : ''; ?>">
 							<label><b>First Name</b></label>
@@ -238,7 +242,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					</form>
 			</div>
 			<div class="container" style="background-color:#f1f1f1">
-							<p>Already have an account? <a href="login.php">Sign in.</a></p>
+							<p>Already have an account? <a href="index.php">Sign in.</a></p>
 							<!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
 						</div>
 

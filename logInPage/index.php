@@ -29,6 +29,7 @@
 
 			session_start();
 			$_SESSION['LoginInfo'] = 'true';
+			//Where is this suppose to point to?
 			header("Location: index.html");
 
 		}
@@ -116,7 +117,7 @@
 		<h1 align="center">Login</h1>
 
 		  <div class="imgcontainer">
-			<img src="raspberrylogo.png" alt="Avatar" class="avatar">
+			<img src="/resources/raspberrylogo.png" alt="Avatar" class="avatar">
 		  </div>
 
 		  <div class="container" style="width:45%;margin-left:auto;margin-right:auto;">
@@ -127,6 +128,7 @@
 			<input type="password" placeholder="Enter Password" name="password" required>
 
 			<button type="submit">Login</button>
+
 			<label>
 			  <input type="checkbox" checked="checked" name="remember"> Remember Me
 			</label>
@@ -137,6 +139,8 @@
 			<!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
 		  </div>
 		</form>
+
+		<button onclick="window.location.href = '/home.php';">Demo User Page</button>
 	</div>
 	</body>
 </html>
