@@ -5,15 +5,28 @@
 	use Workerman\Worker;
 	use PHPSocketIO\SocketIO;
 
-	// listen port 3001 for socket.io client
-	$io = new SocketIO(3001);
-	$io->on('connection', function($socket)use($io){
-		echo 'successful connection';
 
-		$socket->on('disconnect', function(){
-			echo 'client disconnected';
+
+	//This successfully accepts data from some client
+	//then sends it to a user with home.php open.
+	//So the data can now go like this:
+	//(arduino -> server -> client) 
+	//all real time.
+	$ServerSideSocket = new SocketIO(3006);
+
+	$ServerSideSocket->on('connection', function($Incoming)use($ServerSideSocket){
+		echo "Client successfully connected\n";
+
+		$Incoming->on('from S1', function($data)use($ServerSideSocket){
+			echo "Got data\n";;
+			$ServerSideSocket->emit("to C1", $data);
+		});
+
+		$Incoming->on('disconnect', function(){
+			echo "Client disconnected\n";
 		});
 	});
+
 
 	Worker::runAll();
 ?>

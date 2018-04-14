@@ -41,14 +41,22 @@
     <script src="/javascript/socket.io.js"></script>
     <script> 
 
-      //depends on the above socket.io.js file
+      //I commented this out so it won't
+      //open a socket everytime you 
+      //connect while develeloping
 
-      //This is a test to check that socketio is working
-      var socket = io("localhost:3001");
+      // //depends on the above socket.io.js file
+      // var streamSocket = io("http://0.0.0.0:3006");
 
-      socket.on("connect", function(serverSocket){
-        console.log("Test socket 1 Successfully connected");
-      });
+      // //Initial connection
+      // streamSocket.on("connect", function(){
+      //   console.log("CLIENT: Successfully connected to port 3002");
+      //   });
+
+      // //Accept stream
+      // streamSocket.on("to C1", function(data){
+      //   console.log("CLIENT: data received: ", data);
+      // })
 
     </script>
     <script src="/javascript/dynamicPlot.js"></script>
