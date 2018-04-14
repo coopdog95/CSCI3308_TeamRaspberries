@@ -32,14 +32,14 @@ with open("soil/config.php", "w+") as file:
 	file.write(conf)
 
 print("Finished writing config.php")
-print("""
-Go into the soil directory, and run the server with:\n
-\"php -S localhost:3000\"\n
-you can access it in your browser by entering the url:\n
-\"localhost:3000\"\n
+print("----------------------------")
+print("SOME INFO:")
+print("""Go into the soil directory, and run the server with:
+\"php -S localhost:3000\"
+you can access it in your browser by entering the url:
+\"localhost:3000\"
 by default this will point at our index.php file, which
 is the renamed login page. you can also manually append
 filenames like \"localhost:3000/home.php\" and it will 
-serve it.\n
-if you get a SQL error, make sure to install php-sql
-"""
+serve it.
+if you get a SQL error, make sure to install php-sql""")
