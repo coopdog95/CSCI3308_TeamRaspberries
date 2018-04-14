@@ -50,7 +50,7 @@
       //and dynamicPlot.js's updateChart() 
       //function
 
-      //Port for the stream to connect
+      ////Port for the stream to connect
       // var streamSocket = io("http://0.0.0.0:3006");
 
       // //Initial connection
