@@ -16,7 +16,7 @@ var counter = 100;
 
 function generateData(){
 
-	socket.emit('from S1', 'changed this, here is a number:' + counter);
+	socket.emit('from S1', 100 - counter);
 	counter--;
 	if(counter > 0){
 		setTimeout(generateData, 5000);

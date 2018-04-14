@@ -45,7 +45,7 @@
       //open a socket everytime you 
       //connect while develeloping
 
-      // //depends on the above socket.io.js file
+      //depends on the above socket.io.js file
       // var streamSocket = io("http://0.0.0.0:3006");
 
       // //Initial connection
@@ -56,7 +56,9 @@
       // //Accept stream
       // streamSocket.on("to C1", function(data){
       //   console.log("CLIENT: data received: ", data);
+      //   updateChart(data);
       // })
+
 
     </script>
     <script src="/javascript/dynamicPlot.js"></script>
