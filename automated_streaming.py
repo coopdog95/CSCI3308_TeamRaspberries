@@ -6,8 +6,8 @@ import subprocess
 import signal
 import sys
 
-if (True != False):
-	sys.exit()
+# if (True != False):
+# 	sys.exit()
 
 print("Set up listener and dummy client")
 print("When exiting, use crtl-c to exit cleanly")
@@ -27,13 +27,13 @@ print("When exiting, use crtl-c to exit cleanly")
 #kill pid1 pid2 pid3 ..
 #just in case
 
-check_nodejs = subprocess.Popen(["nodejs", "-v"], stdout=subprocess.PIPE)
-nodejs_status = check_nodejs.communicate()[0]
-check_nodejs.terminate()
+# check_nodejs = subprocess.Popen(["nodejs", "-v"], stdout=subprocess.PIPE)
+# nodejs_status = check_nodejs.communicate()[0]
+# check_nodejs.terminate()
 
-check_php = subprocess.Popen(["php", "-v"], stdout=subprocess.PIPE)
-php_status = check_php.communicate()[0]
-chech_php.terminate()
+# check_php = subprocess.Popen(["php", "-v"], stdout=subprocess.PIPE)
+# php_status = check_php.communicate()[0]
+# check_php.terminate()
 
 
 
@@ -54,7 +54,7 @@ Right now I commented it out but it works. I also commented out the global defin
 in dynamicPlot.js outside the function block. Must uncomment for the stream to be able to call it.
 '''
 
-node_client = subprocess.Popen(["node", "files/test_script/pseudo_client.js"])
+node_client = subprocess.Popen(["node", "files/testing_scripts/pseudo_client.js"])
 '''
 This a nodejs client to connect to listen.php and feed it random data, which
 listen.php will relay to the webpage
