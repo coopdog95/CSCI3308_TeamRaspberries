@@ -90,10 +90,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
-		$host = "localhost";
-		$user = "root";
-		$pass = "charley";
-		$db = "Raspberries";
+		$host = DB_SERVER;
+		$user = DB_USERNAME;
+		$pass = DB_PASSWORD;
+		$db = DB_NAME;
 
 		$conn = new mysqli($host, $user, $pass, $db);
 		if($conn === false){

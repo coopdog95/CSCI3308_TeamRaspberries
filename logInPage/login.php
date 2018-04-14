@@ -3,16 +3,16 @@
 <?php
 
 
-	//require_once 'config.php';
+	require_once 'config.php';
 
 
 
 	if($_POST){
 
-		$host = "localhost";
-		$user = "root";
-		$pass = "charley";
-		$db = "Raspberries";
+		$host = DB_SERVER;
+		$user = DB_USERNAME;
+		$pass = DB_PASSWORD;
+		$db = DB_NAME;
 
 		$username = $_POST['username'];
 		$password = $_POST['password'];
