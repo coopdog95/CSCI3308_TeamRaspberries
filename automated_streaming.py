@@ -29,9 +29,12 @@ print("When exiting, use crtl-c to exit cleanly")
 
 check_nodejs = subprocess.Popen(["nodejs", "-v"], stdout=subprocess.PIPE)
 nodejs_status = check_nodejs.communicate()[0]
+check_nodejs.terminate()
 
 check_php = subprocess.Popen(["php", "-v"], stdout=subprocess.PIPE)
 php_status = check_php.communicate()[0]
+chech_php.terminate()
+
 
 
 php_listener = subprocess.Popen(["php", "soil/socket/listen.php", "start"])
