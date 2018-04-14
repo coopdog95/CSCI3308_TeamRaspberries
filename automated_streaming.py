@@ -35,8 +35,27 @@ php_status = check_php.communicate()[0]
 
 
 php_listener = subprocess.Popen(["php", "soil/socket/listen.php", "start"])
+'''
+The PHP listener runs from listen.php, it waits for the source
+of the stream to connect(right now a pseud_client.js, but will be arduino)
+and waits for the destination of the stream to connect (the client's browser)
+before streaming the data
+'''
+
 php_server = subprocess.Popen(["php", "-S", "localhost:3000"], cwd="soil")
+'''
+This is the server, when it serves home.php, there is inline javascript embedded
+in it which tells it to connect to a certain socket (you can find it right BELOW
+the src="socket.io.js" script). It will call the "updateGraph()" function on connection.
+Right now I commented it out but it works. I also commented out the global definition of updateGraph()
+in dynamicPlot.js outside the function block. Must uncomment for the stream to be able to call it.
+'''
+
 node_client = subprocess.Popen(["node", "files/test_script/pseudo_client.js"])
+'''
+This a nodejs client to connect to listen.php and feed it random data, which
+listen.php will relay to the webpage
+'''
 
 
 def kill_all(signal, frame):
