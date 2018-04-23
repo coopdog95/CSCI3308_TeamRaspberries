@@ -37,6 +37,13 @@
 			$ServerSideSocket->emit("to C1", $data);
 		});
 
+
+		$Incoming->on('from S2', function($data)use($ServerSideSocket){
+			echo "Got data\n";
+			//Once triggered, we emit the event 'to C1' to the web browser
+			$ServerSideSocket->emit("to C2", $data);
+		});		
+
 		/*On the event 'from S1' i.e the sensor with sensorID = 1, connects to the server
 		and uploads information, we should probably insert the intercepted
 		data (sensor data relayed from an arduino) to the table with sensorID = 1, as well as
