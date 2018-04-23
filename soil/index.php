@@ -27,10 +27,15 @@
 		$result = mysqli_query($conn, $query);
 		if (mysqli_num_rows($result) == 1) {
 
+
+			//_SESSION stores key-value pairs across different webpages 
 			session_start();
 			$_SESSION['LoginInfo'] = 'true';
+			$_SESSION['username'] = $username;
+			$_SESSION['password'] = $password;
+
 			//Where is this suppose to point to?
-			header("Location: index.html");
+			header("Location: home.php");
 
 		}
 		else {

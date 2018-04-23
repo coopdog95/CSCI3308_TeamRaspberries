@@ -6,29 +6,81 @@ require('config.php');
 $firstName = $lastName = $username = $password = $confirm_password = $email = "";
 $fn_err = $ln_err = $username_err = $password_err = $confirm_password_err = $email_err = "";
 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+function testInput($inputFirstname, $inputLastname, $inputUsername, $inputPassword, $inputConfirmPassword, $inputEmail){
+
+	$err = ""
 
 	//Validate first name
-	if(empty(trim($_POST["firstName"]))){
+	if(empty(trim($inputFirstname))){
 		$fn_err = "Tell us your name!";
+		$err = "There is an error in for the firstname"
 	}
 	else{
-		$firstName = trim($_POST["firstName"]);
+		$firstName = trim($inputFirstname);
 	}
 
 	//Validate last name
-	if(empty(trim($_POST["lastName"]))){
+	if(empty(trim($inputLastname))){
 		$fn_err = "Tell us your last name!";
+		$err = "There is an error in for the lastname"
 	}
 	else{
-		$lastName = trim($_POST["lastName"]);
+		$lastName = trim($inputLastname);
 	}
 
     // Validate username
-    if(empty(trim($_POST["username"]))){
+    if(empty(trim($inputUsername))){
         $username_err = "Please enter a username.";
+		$err = "There is an error in for the username"
+
+    }
+    else{
+    	$userName = $inputUsername;
+    }
+    // Validate password
+    if(empty(trim($inputPassword))){
+        $password_err = "Please enter a password.";
+		$err = "There is an error in for the password"
+    } elseif(strlen(trim($inputPassword)) < 6){
+        $password_err = "Password must have at least 6 characters.";
+		$err = "There is an error in for the password"
     } else{
+        $password = trim($inputPassword);
+    }
+
+    // Validate confirm password
+    if(empty(trim($inputConfirmPassword))){
+        $confirm_password_err = 'Please confirm password.';
+		$err = "There is an error in for the confirm password"
+    } else{
+        $confirm_password = trim($inputConfirmPassword);
+        if($inputPassword != $inputConfirmPassword){
+            $confirm_password_err = 'Password did not match.';
+    		$err = "There is an error in for the confirm pass"
+        }
+    }
+
+    // Validate email address
+    if (empty(trim($inputEmail))) {
+		$email_err = 'Please enter email';
+		$err = "There is an error in for the email"
+
+	}
+	else {
+		$email = trim($inputEmail);
+	}
+
+	return $err
+
+}
+
+testInput($_POST["firstName"], $_POST["lastName"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["email"]);
+
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    // Validate username
+    if(empty($username_err)){
         // Prepare a select statement
         $sql = "SELECT userID FROM LoginInfo WHERE username = ?";
 
@@ -62,33 +114,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         mysqli_stmt_close($stmt);
     }
 
-    // Validate password
-    if(empty(trim($_POST['password']))){
-        $password_err = "Please enter a password.";
-    } elseif(strlen(trim($_POST['password'])) < 6){
-        $password_err = "Password must have at least 6 characters.";
-    } else{
-        $password = trim($_POST['password']);
-    }
-
-    // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = 'Please confirm password.';
-    } else{
-        $confirm_password = trim($_POST['confirm_password']);
-        if($password != $confirm_password){
-            $confirm_password_err = 'Password did not match.';
-        }
-    }
-
-    // Validate email address
-    if (empty(trim($_POST["email"]))) {
-		$email_err = 'Please enter email';
-
-	}
-	else {
-		$email = trim($_POST['email']);
-	}
 
 
     // Check input errors before inserting in database
