@@ -2,11 +2,6 @@
 
 namespace phpUnitTutorial\Test;
 
-$firstName = $lastName = $username = $password = $confirm_password = $email = "";
-$fn_err = $ln_err = $username_err = $password_err = $confirm_password_err = $email_err = "";
-
-
-
 
 class RegistrationValidation extends \PHPUnit_Framework_TestCase
 {

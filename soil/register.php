@@ -74,7 +74,9 @@ function testInput($inputFirstname, $inputLastname, $inputUsername, $inputPasswo
 
 }
 
-testInput($_POST["firstName"], $_POST["lastName"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["email"]);
+
+//$err is the internal error variable, the named errors will be displayed to the user.
+$err = testInput($_POST["firstName"], $_POST["lastName"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["email"]);
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -117,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($err)){
 
 		$host = DB_SERVER;
 		$user = DB_USERNAME;
