@@ -6,6 +6,12 @@ namespace phpUnitTutorial\Test;
 class RegistrationValidation extends \PHPUnit_Framework_TestCase
 {
 
+	public function setUp(){
+		$firstName = $lastName = $username = $password = $confirm_password = $email = "";
+		$fn_err = $ln_err = $username_err = $password_err = $confirm_password_err = $email_err = "";
+
+	}
+
 
 	public function testCorrectInput()
 	{
@@ -26,6 +32,7 @@ class RegistrationValidation extends \PHPUnit_Framework_TestCase
     public function testIncorrectEmptyUserName()
 	{
 
+
 		$testFirstName = "somefirstname";
 		$testLastname = "someLastname";
 		$testUsername = "";
@@ -36,10 +43,6 @@ class RegistrationValidation extends \PHPUnit_Framework_TestCase
 		$returnedErr = $this->inputValidate($testFirstName, $testLastname, $testUsername, $testPassword, $testConfirmPassword,$testEmail);
 
 		$this->assertFalse(empty($returnedErr));
-
-	$firstName = $lastName = $username = $password = $confirm_password = $email = "";
-	$fn_err = $ln_err = $username_err = $password_err = $confirm_password_err = $email_err = "";
-
 
 	}
 
