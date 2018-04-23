@@ -10,7 +10,7 @@ window.onload = function() {
   var dataPoints6 = [{y : 27}];
   var line_chart_TEMP = new CanvasJS.Chart("chartContainer_TEMP", {
       title : {
-        text: "Loading . . ." //CHANGE THIS
+        text: "Loading . . ."
       },
       axisX:{
         title: "",
@@ -34,7 +34,7 @@ window.onload = function() {
         type: "line",
         showInLegend: false,
         name: "Sensor 1",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DD0000",
         dataPoints : dataPoints1
@@ -42,7 +42,7 @@ window.onload = function() {
         type: "line",
         showInLegend: false,
         name: "Sensor 2",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#00BB00",
         dataPoints : dataPoints2
@@ -50,7 +50,7 @@ window.onload = function() {
         type: "line",
         showInLegend: false,
         name: "Sensor 3",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#0000BB",
         dataPoints : dataPoints3
@@ -58,7 +58,7 @@ window.onload = function() {
         type: "line",
         showInLegend: false,
         name: "Sensor 4",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DD00BB",
         dataPoints : dataPoints4
@@ -66,7 +66,7 @@ window.onload = function() {
         type: "line",
         showInLegend: false,
         name: "Sensor 5",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#00BBBB",
         dataPoints : dataPoints5
@@ -74,7 +74,7 @@ window.onload = function() {
         type: "line",
         showInLegend: false,
         name: "Sensor 6",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DDBB00",
         dataPoints : dataPoints6
@@ -106,7 +106,7 @@ window.onload = function() {
 //-----------------------------------------------------------------------------
   var line_chart_HUMI = new CanvasJS.Chart("chartContainer_HUMI", {
       title : {
-        text: "Loading . . ." //CHANGE THIS
+        text: "Loading . . ."
       },
       axisX:{
         title: "Time (seconds)",
@@ -130,7 +130,7 @@ window.onload = function() {
         type: "line",
         showInLegend: true,
         name: "Sensor 1",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DD0000",
         dataPoints : dataPoints1
@@ -138,7 +138,7 @@ window.onload = function() {
         type: "line",
         showInLegend: true,
         name: "Sensor 2",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#00BB00",
         dataPoints : dataPoints2
@@ -146,7 +146,7 @@ window.onload = function() {
         type: "line",
         showInLegend: true,
         name: "Sensor 3",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#0000BB",
         dataPoints : dataPoints3
@@ -154,7 +154,7 @@ window.onload = function() {
         type: "line",
         showInLegend: true,
         name: "Sensor 4",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DD00BB",
         dataPoints : dataPoints4
@@ -162,7 +162,7 @@ window.onload = function() {
         type: "line",
         showInLegend: true,
         name: "Sensor 5",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#00BBBB",
         dataPoints : dataPoints5
@@ -170,7 +170,7 @@ window.onload = function() {
         type: "line",
         showInLegend: true,
         name: "Sensor 6",
-        markerType: "square",
+        //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DDBB00",
         dataPoints : dataPoints6
@@ -205,6 +205,21 @@ window.onload = function() {
   line_chart_HUMI.render();
   bar_chart_HUMI.render();
 //-----------------------------------------------------------------------------  
+  var upperExtreme = 35;
+  var upperMid = 32;
+  var lowerMid = 18;
+  var lowerExtreme = 15;
+//-----------------------------------------------------------------------------
+  var userChangeBounds = function() {
+    console.log(upperExtreme,upperMid,lowerMid,lowerExtreme);
+    upperExtreme = Number(prompt("Upper emergency boundary:", "°C"));
+    upperMid = Number(prompt("Upper warning boundary:", "°C"));
+    lowerMid = Number(prompt("Lower warning boundary:", "°C"));
+    lowerExtreme = Number(prompt("Lower emergency boundary:", "°C"));
+    console.log(upperExtreme,upperMid,lowerMid,lowerExtreme);
+  }
+  document.getElementById("changeBounds").addEventListener("click", userChangeBounds);
+//-----------------------------------------------------------------------------
   var yVal1 = 25;
   var yVal2 = 25;
   var yVal3 = 25;
@@ -244,7 +259,7 @@ window.onload = function() {
     var dpsh = bar_chart_HUMI.options.data[0].dataPoints;
     for (var i = 0; i < dps.length; i++) {
       deltaY = Math.round(2 + Math.random() *(-2-2));
-      sensorColor = (yVals[i] > 35 || yVals[i] < 15) ? "#DD0000" : (yVals[i] >= 32 || yVals[i] <= 18) ? "#FFCA33" : "#6B8E23";
+      sensorColor = (yVals[i] > upperExtreme || yVals[i] < lowerExtreme) ? "#DD0000" : (yVals[i] >= upperMid || yVals[i] <= lowerMid) ? "#FFCA33" : "#6B8E23";
       dps[i] = {label: "Sensor "+(i+1) , y: yVals[i], color: sensorColor};
       dpsh[i] = {label: "Sensor "+(i+1) , y: yVals[i]/100, color: sensorColor};
     }

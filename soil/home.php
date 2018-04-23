@@ -37,10 +37,13 @@
         line-height: 30px;
         padding-left: 10px;
       }
+      button {
+        margin: 0 auto;
+      }
     </style>
     <script src="/javascript/socket.io.js"></script>
     <script src="/javascript/dynamicPlot.js"></script>
-        <script> 
+    <script> 
 
       //I commented this out so it won't
       //open a socket everytime you 
@@ -64,14 +67,13 @@
       //   //Update chart with last bit of stream
       //   updateChart(data);
       // })
-
     </script>
   </head>
-  <body style="overflow: hidden;">
+  <body style="overflow: hidden; margin-left: 10%; margin-right: 10%">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Moisture and Temp Data for user: <?php echo $_SESSION["username"] ?> </a>
+        <a class="navbar-brand" href="#">Moisture and Temp Data</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,7 +85,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Log in</a>
+              <a class="nav-link" href="file:///Users/aaronbarge/Desktop/Raspberries/logInPage/longin.html">Log in</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Plant Info</a>
@@ -100,50 +102,17 @@
     </nav>
     <!-- Page Content -->
     <div class="row align-items-center">
-      <div class="col-5">
-        <table class="table table-hover" style="height: 370px;">
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Device number</th>
-              <th>LAT/LONG</th>
-              <th>Temperature</th>
-              <th>Humidity</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>John</td>
-              <td>5</td>
-              <td>lat: 44.32955, lng: -74.12385</td>
-              <td>65</td>
-              <td>22%</td>
-            </tr>
-                        <tr>
-              <td>Tom</td>
-              <td>5</td>
-              <td>lat: 44.32955, lng: -74.12385</td>
-              <td>65</td>
-              <td>22%</td>
-            </tr>
-                        <tr>
-              <td>Betty</td>
-              <td>5</td>
-              <td>lat: 44.32955, lng: -74.12385</td>
-              <td>65</td>
-              <td>22%</td>
-            </tr>
-           
-          </tbody>
-        </table>
-      </div>
+      <div id="BarChartContainer_TEMP" class="col-5" style="height: 370px; max-width: 100%; margin-left: auto;"></div>
+      <div id="chartContainer_TEMP" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
+      <div id="BarChartContainer_HUMI" class="col-5" style="height: 370px; max-width: 100%; margin-left: auto;"></div>
+      <div id="chartContainer_HUMI" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
+      <script src="canvasjs.min.js"></script>
+      <button id="changeBounds">Change Color Boundaries</button>
       
-      <div id="chartContainer" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
-      <script src="/javascript/canvasjs.min.js"></script>
     </div>
     
-    <!-- This is the drop down links menu  -->
-    <div class="row align-items-center" >
+    <!-- This is the drop down links menu -->
+    <!-- <div class="row align-items-center" >
       <div class="col-auto" style="background-color: white;"></div>
       <div class="col-auto" style="background-color: white;">
         <div style="background-color: white;" class="dropdown show">
@@ -157,14 +126,14 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
       <!--  pin on off functionality not sure if i want to use this  -->
         <!--<style>.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }</style>
         <div>
           <input type="checkbox" checked data-toggle="toggle" data-on="Drop<br>Pins" data-off="Stop<br>Droping" data-style="slow">
         </div> -->
       <!-- this is the actual map portion of the sight  -->
-    <div id="map" style="bottom: 0; position: absolute; max-height: 50%; width: 100%">
+    <!-- <div id="map" style="bottom: 2%; position: absolute; max-height: 50%; width: 80%">
       <script>
         // In the following example, markers appear when the user clicks on the map.
         // The markers are stored in an array.
@@ -236,13 +205,13 @@
           markers = [];
         }
       </script>
-    </div>
+    </div> -->
     <!-- Bootstrap core JavaScript -->
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap">
     </script>
-    <script src="/javascript/vendor/jquery/jquery.min.js"></script>
-    <script src="/javascript/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </body>
 </html>
