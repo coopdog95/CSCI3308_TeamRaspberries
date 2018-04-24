@@ -208,7 +208,7 @@ window.onload = function() {
         dataPoints : dataPoints6
       },{
         type: "line",
-        showInLegend: false,
+        showInLegend: true,
         name: "Sensor 7",
         //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
