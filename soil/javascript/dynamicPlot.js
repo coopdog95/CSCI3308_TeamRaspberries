@@ -1,4 +1,5 @@
-
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 /*
 Defining the chart and data point outside
 the scope of the below function, so that 
@@ -11,14 +12,25 @@ scope), which will be called by the stream when the arduino
 */
 var chart;
 var dataPoints;
-
+var outsideTEMP;
+var outsideHUMI;
+//-----------------------------------------------------------------------------
 window.onload = function() {
+  $.ajax({url:'https://api.forecast.io/forecast/35152a0bbe2821ad1b420c93a70db089/40.014984,-105.270546', dataType:"jsonp"}).then(function(data) {
+     outsideTEMP = (data.currently.temperature - 32) * (5/9);
+     outsideHUMI = data.currently.humidity;
+     console.log(outsideTEMP);
+     console.log(outsideHUMI);
+   });
+//-----------------------------------------------------------------------------     
   var dataPoints1 = [{y : 22}];
   var dataPoints2 = [{y : 23}];
   var dataPoints3 = [{y : 24}];
   var dataPoints4 = [{y : 25}];
   var dataPoints5 = [{y : 26}];
   var dataPoints6 = [{y : 27}];
+  var dataPointsTEMP = [{y : outsideTEMP}];
+  var dataPointsHUMI = [{y : outsideHUMI}];
   var line_chart_TEMP = new CanvasJS.Chart("chartContainer_TEMP", {
       title : {
         text: "Loading . . ."
@@ -89,6 +101,14 @@ window.onload = function() {
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DDBB00",
         dataPoints : dataPoints6
+      },{
+        type: "line",
+        showInLegend: false,
+        name: "Sensor 7",
+        //markerType: "none",
+        //xValueFormatString: "DD MMM, YYYY",
+        color: "#DDBBBB",
+        dataPoints : dataPointsTEMP
       }]
   });
 //-----------------------------------------------------------------------------
@@ -102,7 +122,7 @@ window.onload = function() {
     },
     data: [{
       type: "column", 
-      yValueFormatString: "#,### °C",
+      yValueFormatString: "#,###.## °C",
       indexLabel: "{y}",
       dataPoints: [
         { label: "sensor1", y: 22 },
@@ -110,7 +130,8 @@ window.onload = function() {
         { label: "sensor3", y: 24 },
         { label: "sensor4", y: 25 },
         { label: "sensor5", y: 26 },
-        { label: "sensor6", y: 27 }
+        { label: "sensor6", y: 27 },
+        { label: "OUTSIDE", y:outsideTEMP}
       ]
     }]
   });
@@ -185,6 +206,14 @@ window.onload = function() {
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DDBB00",
         dataPoints : dataPoints6
+      },{
+        type: "line",
+        showInLegend: false,
+        name: "Sensor 7",
+        //markerType: "none",
+        //xValueFormatString: "DD MMM, YYYY",
+        color: "#DDBBBB",
+        dataPoints : dataPointsHUMI
       }]
   });
 //-----------------------------------------------------------------------------
@@ -194,11 +223,11 @@ window.onload = function() {
     },
     axisY: {
       title: "Humidity",
-      valueFormatString: "###%"
+      valueFormatString: "###.##%"
     },
     data: [{
       type: "column", 
-      yValueFormatString: "###%",
+      yValueFormatString: "###.##%",
       indexLabel: "{y}",
       dataPoints: [
         { label: "sensor1", y: 0.22 },
@@ -206,7 +235,8 @@ window.onload = function() {
         { label: "sensor3", y: 0.24 },
         { label: "sensor4", y: 0.25 },
         { label: "sensor5", y: 0.26 },
-        { label: "sensor6", y: 0.27 }
+        { label: "sensor6", y: 0.27 },
+        { label: "OUTSIDE", y: outsideHUMI}
       ]
     }]
   });
@@ -239,19 +269,27 @@ window.onload = function() {
   var yVal6 = 25;
   var updateChart = function () {
     yVal1 = yVal1 + Math.round(2 + Math.random() * (-2 - 2));
-    dataPoints1.push({y : yVal1});
     yVal2 = yVal2 + Math.round(2 + Math.random() * (-2 - 2));
-    dataPoints2.push({y : yVal2});
     yVal3 = yVal3 + Math.round(2 + Math.random() * (-2 - 2));
-    dataPoints3.push({y : yVal3});
     yVal4 = yVal4 + Math.round(2 + Math.random() * (-2 - 2));
-    dataPoints4.push({y : yVal4});
     yVal5 = yVal5 + Math.round(2 + Math.random() * (-2 - 2));
-    dataPoints5.push({y : yVal5});
     yVal6 = yVal6 + Math.round(2 + Math.random() * (-2 - 2));
+    dataPoints1.push({y : yVal1});
+    dataPoints2.push({y : yVal2});
+    dataPoints3.push({y : yVal3});
+    dataPoints4.push({y : yVal4});
+    dataPoints5.push({y : yVal5});
     dataPoints6.push({y : yVal6});
+    $.ajax({url:'https://api.forecast.io/forecast/35152a0bbe2821ad1b420c93a70db089/40.014984,-105.270546', dataType:"jsonp"}).then(function(data) {
+     outsideTEMP = (data.currently.temperature - 32) * (5/9);
+     outsideHUMI = data.currently.humidity;
 
-    yVals = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6]
+     dataPointsTEMP.push({y : outsideTEMP});
+     dataPointsHUMI.push({y : outsideHUMI});
+    });
+
+    yValsTEMP = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6,outsideTEMP]
+    yValsHUMI = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6,outsideHUMI]
 
     var d = new Date();
     var month = (d.getMonth() < '10') ? ('0' + d.getMonth()) : d.getMonth();
@@ -260,27 +298,25 @@ window.onload = function() {
     var hour = (d.getHours() < '10') ? ('0' + d.getHours()) : d.getHours();
     var min = (d.getMinutes() < '10') ? ('0' + d.getMinutes()) : d.getMinutes();
     var sec = (d.getSeconds() < '10') ? ('0' + d.getSeconds()) : d.getSeconds();    
-    line_chart_TEMP.options.title.text = "Temperature History as of:   " + month + "-" 
-                                    + day + "-" + year + " @ " + hour + ":" + min + ":" + sec;
-    line_chart_HUMI.options.title.text = "Humidity History as of:   " + month + "-" 
-                                    + day + "-" + year + " @ " + hour + ":" + min + ":" + sec;
+    line_chart_TEMP.options.title.text = "Temperature History as of:   " + month + "-" + day + "-" + year + " @ " + hour + ":" + min + ":" + sec;
+    line_chart_HUMI.options.title.text = "Humidity History as of:   " + month + "-" + day + "-" + year + " @ " + hour + ":" + min + ":" + sec;
     //-----------------------------------------------------------------------------
     var sensorColor, deltaY;
     var dps = bar_chart_TEMP.options.data[0].dataPoints;
     var dpsh = bar_chart_HUMI.options.data[0].dataPoints;
     for (var i = 0; i < dps.length; i++) {
       deltaY = Math.round(2 + Math.random() *(-2-2));
-      sensorColor = (yVals[i] > upperExtreme || yVals[i] < lowerExtreme) ? "#DD0000" : (yVals[i] >= upperMid || yVals[i] <= lowerMid) ? "#FFCA33" : "#6B8E23";
-      dps[i] = {label: "Sensor "+(i+1) , y: yVals[i], color: sensorColor};
-      dpsh[i] = {label: "Sensor "+(i+1) , y: yVals[i]/100, color: sensorColor};
+      sensorColor = (yValsTEMP[i] > upperExtreme || yValsTEMP[i] < lowerExtreme) ? "#DD0000" : (yValsTEMP[i] >= upperMid || yValsTEMP[i] <= lowerMid) ? "#FFCA33" : "#6B8E23";
+      dps[i] = {label: "Sensor "+(i+1) , y: yValsTEMP[i], color: sensorColor};
+      dpsh[i] = {label: "Sensor "+(i+1) , y: yValsHUMI[i]/100, color: sensorColor};
     }
     bar_chart_TEMP.options.data[0].dataPoints = dps;
     bar_chart_TEMP.options.title.text = "Live Temperature Readings";
     bar_chart_HUMI.options.data[0].dataPoints = dpsh;
     bar_chart_HUMI.options.title.text = "Live Humidity Readings";
 
-    bar_chart_TEMP.render();
-    line_chart_TEMP.render();  
+    line_chart_TEMP.render(); 
+    bar_chart_TEMP.render(); 
     line_chart_HUMI.render();
     bar_chart_HUMI.render();
   };

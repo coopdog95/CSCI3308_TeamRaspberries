@@ -10,6 +10,8 @@
     <link href="/javascript/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- this is for the on off button -->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <!-- Current weather stuff from lab 7 -->
+    <script src="http://code.jquery.com/jquery-2.2.0.js"></script>
     <!-- Custom styles for this template -->
     <style>
       body {
@@ -38,7 +40,8 @@
         padding-left: 10px;
       }
       button {
-        margin: 0 auto;
+        margin: 5% auto;
+
       }
     </style>
     <script src="/javascript/socket.io.js"></script>
@@ -106,8 +109,8 @@
       <div id="chartContainer_TEMP" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
       <div id="BarChartContainer_HUMI" class="col-5" style="height: 370px; max-width: 100%; margin-left: auto;"></div>
       <div id="chartContainer_HUMI" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
-      <script src="canvasjs.min.js"></script>
-      <button id="changeBounds">Change Color Boundaries</button>
+      <script src="/javascript/canvasjs.min.js"></script>
+      <button id="changeBounds" type="button" class="btn btn-outline-dark">Change Color Boundaries</button>
       
     </div>
     
