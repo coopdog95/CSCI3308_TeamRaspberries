@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>PROJECT HOME PAGE</title>
+    <title>PROJECT MAP PAGE</title>
     <!-- Bootstrap core CSS -->
     <link href="/javascript/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- this is for the on off button -->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <!-- Current weather stuff from lab 7 -->
-    <script src="http://code.jquery.com/jquery-2.2.0.js"></script>
     <!-- Custom styles for this template -->
     <style>
       body {
@@ -23,8 +21,13 @@
         }
       }
       #map {
-        height: 600px;
+        height: 100%;
         width: 100%;
+        bottom: 2%;
+        position: absolute;
+        max-height: 90%; 
+        width: 80%;
+        margin-top: 10%
       }
       #floating-panel {
         position: absolute;
@@ -45,32 +48,6 @@
       }
     </style>
     <script src="/javascript/socket.io.js"></script>
-    <script src="/javascript/dynamicPlot.js"></script>
-    <script> 
-
-      //I commented this out so it won't
-      //open a socket everytime you 
-      //connect while develeloping
-
-      //requires the above socket.io.js file
-      //and dynamicPlot.js's updateChart() 
-      //function
-
-      ////Port for the stream to connect
-      // var streamSocket = io("http://0.0.0.0:3006");
-
-      // //Initial connection
-      // streamSocket.on("connect", function(){
-      //   console.log("CLIENT: Successfully connected to port 3002");
-      //   });
-
-      // //Ready to accept data on the event "to C1"
-      // streamSocket.on("to C1", function(data){
-      //   console.log("CLIENT: data received: ", data);
-      //   //Update chart with last bit of stream
-      //   updateChart(data);
-      // })
-    </script>
   </head>
   <body style="overflow: hidden; margin-left: 10%; margin-right: 10%">
     <!-- Navigation -->
@@ -82,13 +59,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="">Home
+            <li class="nav-item">
+              <a class="nav-link" href="home.php">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="map.php">Map</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="#map">Map</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="file:///Users/aaronbarge/Desktop/Raspberries/logInPage/longin.html">Log in</a>
@@ -107,15 +84,6 @@
       </div>
     </nav>
     <!-- Page Content -->
-    <div class="row align-items-center">
-      <div id="BarChartContainer_TEMP" class="col-5" style="height: 370px; max-width: 100%; margin-left: auto;"></div>
-      <div id="chartContainer_TEMP" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
-      <div id="BarChartContainer_HUMI" class="col-5" style="height: 370px; max-width: 100%; margin-left: auto;"></div>
-      <div id="chartContainer_HUMI" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
-      <script src="/javascript/canvasjs.min.js"></script>
-      <button id="changeBounds" type="button" class="btn btn-outline-dark">Change Color Boundaries</button>
-    </div>
-    
     <!-- This is the drop down links menu -->
     <!-- <div class="row align-items-center" >
       <div class="col-auto" style="background-color: white;"></div>
@@ -137,8 +105,8 @@
         <div>
           <input type="checkbox" checked data-toggle="toggle" data-on="Drop<br>Pins" data-off="Stop<br>Droping" data-style="slow">
         </div> -->
-      <!-- this is the actual map portion of the sight  -->
-    <!-- <div id="map" style="bottom: 2%; position: absolute; max-height: 50%; width: 80%">
+    <!-- this is the actual map portion of the sight  -->
+    <div id="map">
       <script>
         // In the following example, markers appear when the user clicks on the map.
         // The markers are stored in an array.
@@ -152,8 +120,6 @@
           center: saranac_lake,
           mapTypeId: 'satellite'
         });
-        
-        
         
         // This event listener will call addMarker() when the map is  clicked.
         map.addListener('click', function(event) {
@@ -210,11 +176,9 @@
           markers = [];
         }
       </script>
-    </div> -->
+    </div>
     <!-- Bootstrap core JavaScript -->
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap">
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap"> </script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
