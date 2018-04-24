@@ -25,9 +25,8 @@
         width: 100%;
         bottom: 2%;
         position: absolute;
-        max-height: 90%; 
+        max-height: 85%; 
         width: 80%;
-        margin-top: 10%
       }
       #floating-panel {
         position: absolute;
@@ -53,7 +52,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Moisture and Temp Data</a>
+        <a class="navbar-brand" href="#">Map of Sensor Locations</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -85,7 +84,7 @@
     </nav>
     <!-- Page Content -->
     <!-- This is the drop down links menu -->
-    <!-- <div class="row align-items-center" >
+    <div class="row align-items-center" >
       <div class="col-auto" style="background-color: white;"></div>
       <div class="col-auto" style="background-color: white;">
         <div style="background-color: white;" class="dropdown show">
@@ -99,7 +98,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
       <!--  pin on off functionality not sure if i want to use this  -->
         <!--<style>.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }</style>
         <div>
@@ -130,10 +129,10 @@
         
         // this is might be used to have pop up info when clicking on the markers
         // var contentString = '<div id="content">'+
-          // '<div id="siteNotice">'+
-          // '</div>'+
+        // '<div id="siteNotice">'+
+        // '</div>'+
         // '(last visited June 22, 2009).</p>'+
-          // '</div>'+
+        // '</div>'+
         // '</div>';
         // var infowindow = new google.maps.InfoWindow({
         // content: contentString,
