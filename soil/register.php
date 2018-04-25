@@ -1,90 +1,90 @@
 <?php
 // Include config file
-require('config.php');
+require_once('config.php');
 
 // Define variables and initialize with empty values
-$firstName = $lastName = $username = $password = $confirm_password = $email = "";
-$fn_err = $ln_err = $username_err = $password_err = $confirm_password_err = $email_err = "";
 
-function testInput($inputFirstname, $inputLastname, $inputUsername, $inputPassword, $inputConfirmPassword, $inputEmail){
+function inputValidate($inputFirstname, $inputLastname, $inputUsername, $inputPassword, $inputConfirmPassword, $inputEmail){
 
-	$err = ""
+	$errArray = array("fn_err" => "",
+					  "ln_err" => "",
+					  "username_err" => "",
+					  "password_err" => "",
+					  "confirm_password_err" => "",
+					  "email_err" => "");
+
+	$inputArray = array("firstName" => "",
+					  "lastName" => "",
+					  "username" => "",
+					  "password" => "",
+					  "email" => "");
 
 	//Validate first name
 	if(empty(trim($inputFirstname))){
-		$fn_err = "Tell us your name!";
-		$err = "There is an error in for the firstname"
+		$errArray[fn_err] = "Tell us your name!";
 	}
 	else{
-		$firstName = trim($inputFirstname);
+		$inputArray["firstName"] = trim($inputFirstname);
 	}
 
 	//Validate last name
 	if(empty(trim($inputLastname))){
-		$fn_err = "Tell us your last name!";
-		$err = "There is an error in for the lastname"
+		$errArray[fn_err] = "Tell us your last name!";
 	}
 	else{
-		$lastName = trim($inputLastname);
+		$inputArray["lastName"] = trim($inputLastname);
 	}
 
     // Validate username
     if(empty(trim($inputUsername))){
-        $username_err = "Please enter a username.";
-		$err = "There is an error in for the username"
-
+		$errArray["username_err"] = "Please enter a username.";
     }
     else{
-    	$userName = $inputUsername;
+    	$inputArray["username"] = $inputUsername;
     }
     // Validate password
     if(empty(trim($inputPassword))){
-        $password_err = "Please enter a password.";
-		$err = "There is an error in for the password"
+		$errArray["password_err"] = "Please enter a password.";
     } elseif(strlen(trim($inputPassword)) < 6){
-        $password_err = "Password must have at least 6 characters.";
-		$err = "There is an error in for the password"
+		$errArray["password_err"] = "Password must have at least 6 characters.";
     } else{
-        $password = trim($inputPassword);
+        $inputArray["password"] = trim($inputPassword);
     }
 
     // Validate confirm password
     if(empty(trim($inputConfirmPassword))){
-        $confirm_password_err = 'Please confirm password.';
-		$err = "There is an error in for the confirm password"
+		$errArray["confirm_password_err"] = "Please confirm password.";
     } else{
         $confirm_password = trim($inputConfirmPassword);
         if($inputPassword != $inputConfirmPassword){
-            $confirm_password_err = 'Password did not match.';
-    		$err = "There is an error in for the confirm pass"
+			$errArray["confirm_password_err"] = "Password did not match.";
         }
     }
 
     // Validate email address
     if (empty(trim($inputEmail))) {
-		$email_err = 'Please enter email';
-		$err = "There is an error in for the email"
-
+		$errArray["email_err"] = "Please enter email.";
 	}
 	else {
-		$email = trim($inputEmail);
+		$inputArray["email"] = trim($inputEmail);
 	}
-
-	return $err
+	return array($errArray, $inputArray);
 
 }
 
 
-//$err is the internal error variable, the named errors will be displayed to the user.
-$err = testInput($_POST["firstName"], $_POST["lastName"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["email"]);
-
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+	//$err is the internal error variable, the named errors will be displayed to the user.
+	$returnedValidationArray = inputValidate($_POST["firstName"], $_POST["lastName"], $_POST["username"], $_POST["password"], $_POST["confirm_password"], $_POST["email"]);
+
+	$returnedErrArray = $returnedValidationArray[0];
+	$returnedInputArray = $returnedValidationArray[1];
 
     // Validate username
-    if(empty($username_err)){
+    if(empty($returnedErrArray["username_err"])){
         // Prepare a select statement
-        $sql = "SELECT userID FROM LoginInfo WHERE username = ?";
+        $sql = "SELECT userID FROM logininfo WHERE username = ?";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -99,27 +99,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 mysqli_stmt_store_result($stmt);
 
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
-                } else{
-                    $username = trim($_POST["username"]);
+                    $returnedErrArray["username_err"] = "This username is already taken.";
                 }
             } else{
-	            $username_err = "Some username related error 1.";
                 echo "Oops! Something went wrong. Please try again later.";
             }
         }
         else{
-            $username_err = "Some username related error 2.";
+                echo "Oops! Something went wrong. Please try again later.";
         }
 
         // Close statement
         mysqli_stmt_close($stmt);
     }
 
+    // Checking that all the error strings are empty
+    $errBoolean = True;
+	foreach ($returnedErrArray as $key => $value) {
+			$errBoolean = $errBoolean && empty($value);
+	}
 
-
-    // Check input errors before inserting in database
-    if(empty($err)){
+    if($errBoolean){
 
 		$host = DB_SERVER;
 		$user = DB_USERNAME;
@@ -132,9 +132,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			die("ERROR: Could not connect loser." . mysqli_connect_error());
 		}
 
-		$query = "INSERT INTO LoginInfo (firstName, lastName, username, password, email) VALUES ('$firstName', '$lastName', '$username', '$password', '$email')";
+		//Builing the insertion string with the user's input 
+		$insertionString = $insertionString."('".$returnedInputArray["firstName"]."'," ;
+		$insertionString = $insertionString."'".$returnedInputArray["lastName"]."'," ;
+		$insertionString = $insertionString."'".$returnedInputArray["username"]."'," ;
+		$insertionString = $insertionString."'".$returnedInputArray["password"]."'," ;
+		$insertionString = $insertionString."'".$returnedInputArray["email"]."')";
+
+		$query = "INSERT INTO logininfo (firstName, lastName, username, password, email) VALUES ".$insertionString;
+
 		if($conn->query($query) === TRUE ) {
-			echo "You have successfully registered!";
+
+			//If we have a succesful registration, redirect
+			if (session_status() == PHP_SESSION_NONE) {
+				//Start session if there isn't one
+			    session_start();
+			    $_SESSION['JustRegistered'] = True;
+			}
+			else{
+				//Don't start session
+				$_SESSION['JustRegistered'] = True;
+			}
+			//Redirect to login
+			header("Location: index.php");
 		}
 		else {
 			echo "Error: " . $query . "<br>" . $conn->error;
@@ -225,40 +245,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<div class="imgcontainer">
 				<img src="resources/raspberrylogo.png" alt="Avatar" class="avatar">
 			</div>
-			<div class="container" action="/index.php" style="width:45%;margin-left:auto;margin-right:auto;">
+			<div class="container" action="index.php" style="width:45%;margin-left:auto;margin-right:auto;">
 						<!-- firstName -->
-						<div class="form-group <?php echo (!empty($fn_err)) ? 'has-error' : ''; ?>">
+						<div class="form-group <?php echo (!empty($returnedErrArray["fn_err"])) ? 'has-error' : ''; ?>">
 							<label><b>First Name</b></label>
 							<input type="text" name="firstName"class="form-control" value="<?php echo $firstName; ?>" placeholder="Enter your first name">
-							<span class="help-block"><?php echo $fn_err; ?></span>
+							<span class="help-block"><?php echo $returnedErrArray["fn_err"]; ?></span>
 						</div>
 
 						<!-- lastName -->
-						<div class="form-group <?php echo (!empty($ln_err)) ? 'has-error' : ''; ?>">
+						<div class="form-group <?php echo (!empty($returnedErrArray["ln_err"])) ? 'has-error' : ''; ?>">
 							<label><b>Last Name</b></label>
 							<input type="text" name="lastName"class="form-control" value="<?php echo $lastName; ?>" placeholder="Enter your last name">
-							<span class="help-block"><?php echo $ln_err; ?></span>
+							<span class="help-block"><?php echo $returnedErrArray["ln_err"]; ?></span>
 						</div>
 
 						<!-- username -->
-						<div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+						<div class="form-group <?php echo (!empty($returnedErrArray["username_err"])) ? 'has-error' : ''; ?>">
 							<label><b>Username</b></label>
 							<input type="text" name="username"class="form-control" value="<?php echo $username; ?>" placeholder="Enter a username">
-							<span class="help-block"><?php echo $username_err; ?></span>
+							<span class="help-block"><?php echo $returnedErrArray["username_err"]; ?></span>
 						</div>
 
 						<!-- password -->
-						<div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+						<div class="form-group <?php echo (!empty($returnedErrArray["password_err"])) ? 'has-error' : ''; ?>">
 							<label><b>Password</b></label>
 							<input type="password" name="password" class="form-control" value="<?php echo $password; ?>" placeholder="Enter a password">
-							<span class="help-block"><?php echo $password_err; ?></span>
+							<span class="help-block"><?php echo $returnedErrArray["password_err"]; ?></span>
 						</div>
 
 						<!-- confirm password -->
-						<div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+						<div class="form-group <?php echo (!empty($returnedErrArray["confirm_password_err"])) ? 'has-error' : ''; ?>">
 							<label><b>Confirm Password</b></label>
 							<input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>" placeholder="Please confirm your password">
-							<span class="help-block"><?php echo $confirm_password_err; ?></span>
+							<span class="help-block"><?php echo $returnedErrArray["confirm_password_err"]; ?></span>
 						</div>
 
 						<label for="email"><b>Email</b></label>

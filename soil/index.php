@@ -5,7 +5,13 @@
 
 	require_once 'config.php';
 
+	session_start();
 
+	//If the user was redirected, we print "successful registration"
+	if($_SESSION['JustRegistered'] == True){
+		echo "Successful Registration!";
+		$_SESSION['JustRegistered'] = False;
+	}
 
 	if($_POST){
 
@@ -23,14 +29,13 @@
 			die("ERROR: Could not connect loser." . mysqli_connect_error());
 		}
 
-		$query = "SELECT * FROM LoginInfo WHERE username='$username' and password='$password'";
+		$query = "SELECT * FROM logininfo WHERE username='$username' and password='$password'";
 		$result = mysqli_query($conn, $query);
 		if (mysqli_num_rows($result) == 1) {
 
 
 			//_SESSION stores key-value pairs across different webpages 
-			session_start();
-			$_SESSION['LoginInfo'] = 'true';
+			$_SESSION['logininfo'] = 'true';
 			$_SESSION['username'] = $username;
 			$_SESSION['password'] = $password;
 

@@ -8,8 +8,6 @@ class RegistrationValidation extends \PHPUnit_Framework_TestCase
 
 	public function setUp(){
 		$firstName = $lastName = $username = $password = $confirm_password = $email = "";
-		$fn_err = $ln_err = $username_err = $password_err = $confirm_password_err = $email_err = "";
-
 	}
 
 
@@ -23,9 +21,17 @@ class RegistrationValidation extends \PHPUnit_Framework_TestCase
 		$testConfirmPassword = $testPassword;
 		$testEmail = "anemail@domain.com";
 
-		$returnedErr = $this->inputValidate($testFirstName, $testLastname, $testUsername, $testPassword, $testConfirmPassword,$testEmail);
+		$returnedValidationArray= $this->inputValidate($testFirstName, $testLastname, $testUsername, $testPassword, $testConfirmPassword,$testEmail);
+		$returnedErrArray = $returnedValidationArray[0];
 
-		$this->assertTrue(empty($returnedErr));
+
+		//Confirm empty for each error string
+		$errBoolean = true;
+		foreach ($returnedErrArray as $key => $value) {
+			$errBoolean = $errBoolean && empty($value);
+		}
+
+		$this->assertTrue($errBoolean);
 
 	}
 
@@ -40,9 +46,10 @@ class RegistrationValidation extends \PHPUnit_Framework_TestCase
 		$testConfirmPassword = $testPassword;
 		$testEmail = "anemail@domain.com";
 
-		$returnedErr = $this->inputValidate($testFirstName, $testLastname, $testUsername, $testPassword, $testConfirmPassword,$testEmail);
+		$returnedValidationArray= $this->inputValidate($testFirstName, $testLastname, $testUsername, $testPassword, $testConfirmPassword,$testEmail);
+		$returnedErrArray = $returnedValidationArray[0];
 
-		$this->assertFalse(empty($returnedErr));
+		$this->assertFalse(empty($returnedErrArray["username_err"]));
 
 	}
 
@@ -56,79 +63,81 @@ class RegistrationValidation extends \PHPUnit_Framework_TestCase
 		$testConfirmPassword = "notSomePassword";
 		$testEmail = "anemail@domain.com";
 
-		$returnedErr = $this->inputValidate($testFirstName, $testLastname, $testUsername, $testPassword, $testConfirmPassword,$testEmail);
-
-		$this->assertFalse(empty($returnedErr));
+		$returnedValidationArray= $this->inputValidate($testFirstName, $testLastname, $testUsername, $testPassword, $testConfirmPassword,$testEmail);
+		$returnedErrArray = $returnedValidationArray[0];
+		
+		$this->assertFalse(empty($returnedErrArray["confirm_password_err"]));
 
 
 	}	
 
-    public function inputValidate($inputFirstname, $inputLastname, $inputUsername, $inputPassword, $inputConfirmPassword, $inputEmail){
+	function inputValidate($inputFirstname, $inputLastname, $inputUsername, $inputPassword, $inputConfirmPassword, $inputEmail){
 
-	$err = "";
+		$errArray = array("fn_err" => "",
+						  "ln_err" => "",
+						  "username_err" => "",
+						  "password_err" => "",
+						  "confirm_password_err" => "",
+						  "email_err" => "");
 
-	//Validate first name
-	if(empty(trim($inputFirstname))){
-		$fn_err = "Tell us your name!";
-		$err = "There is an error in for the firstname";
+		$inputArray = array("firstName" => "",
+						  "lastName" => "",
+						  "username" => "",
+						  "password" => "",
+						  "email" => "");
+
+		//Validate first name
+		if(empty(trim($inputFirstname))){
+			$errArray[fn_err] = "Tell us your name!";
+		}
+		else{
+			$inputArray["firstName"] = trim($inputFirstname);
+		}
+
+		//Validate last name
+		if(empty(trim($inputLastname))){
+			$errArray[fn_err] = "Tell us your last name!";
+		}
+		else{
+			$inputArray["lastName"] = trim($inputLastname);
+		}
+
+	    // Validate username
+	    if(empty(trim($inputUsername))){
+			$errArray["username_err"] = "Please enter a username.";
+	    }
+	    else{
+	    	$inputArray["username"] = $inputUsername;
+	    }
+	    // Validate password
+	    if(empty(trim($inputPassword))){
+			$errArray["password_err"] = "Please enter a password.";
+	    } elseif(strlen(trim($inputPassword)) < 6){
+			$errArray["password_err"] = "Password must have at least 6 characters.";
+	    } else{
+	        $inputArray["password"] = trim($inputPassword);
+	    }
+
+	    // Validate confirm password
+	    if(empty(trim($inputConfirmPassword))){
+			$errArray["confirm_password_err"] = "Please confirm password.";
+	    } else{
+	        $confirm_password = trim($inputConfirmPassword);
+	        if($inputPassword != $inputConfirmPassword){
+				$errArray["confirm_password_err"] = "Password did not match.";
+	        }
+	    }
+
+	    // Validate email address
+	    if (empty(trim($inputEmail))) {
+			$errArray["email_err"] = "Please enter email.";
+		}
+		else {
+			$inputArray["email"] = trim($inputEmail);
+		}
+		return array($errArray, $inputArray);
+
 	}
-	else{
-		$firstName = trim($inputFirstname);
-	}
 
-	//Validate last name
-	if(empty(trim($inputLastname))){
-		$fn_err = "Tell us your last name!";
-		$err = "There is an error in for the lastname";
-	}
-	else{
-		$lastName = trim($inputLastname);
-	}
-
-    // Validate username
-    if(empty(trim($inputUsername))){
-        $username_err = "Please enter a username.";
-		$err = "There is an error in for the username";
-
-    }
-    else{
-    	$userName = $inputUsername;
-    }
-    // Validate password
-    if(empty(trim($inputPassword))){
-        $password_err = "Please enter a password.";
-		$err = "There is an error in for the password";
-    } elseif(strlen(trim($inputPassword)) < 6){
-        $password_err = "Password must have at least 6 characters.";
-		$err = "There is an error in for the password";
-    } else{
-        $password = trim($inputPassword);
-    }
-
-    // Validate confirm password
-    if(empty(trim($inputConfirmPassword))){
-        $confirm_password_err = 'Please confirm password.';
-		$err = "There is an error in for the confirm password";
-    } else{
-        $confirm_password = trim($inputConfirmPassword);
-        if($inputPassword != $inputConfirmPassword){
-            $confirm_password_err = 'Password did not match.';
-    		$err = "There is an error in for the confirm pass";
-        }
-    }
-
-    // Validate email address
-    if (empty(trim($inputEmail))) {
-		$email_err = 'Please enter email';
-		$err = "There is an error in for the email";
-
-	}
-	else {
-		$email = trim($inputEmail);
-	}
-
-	return $err;
-
-	}
 
 }
