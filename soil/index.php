@@ -7,39 +7,38 @@
 
 	session_start();
 
-	//If the user was redirected, we print "successful registration"
-	if($_SESSION['JustRegistered'] == True){
-		echo "Successful Registration!";
-		$_SESSION['JustRegistered'] = False;
-	}
-
 	if($_POST){
 
-		$host = DB_SERVER;
-		$user = DB_USERNAME;
-		$pass = DB_PASSWORD;
-		$db = DB_NAME;
+		// $host = DB_SERVER;
+		// $user = DB_USERNAME;
+		// $pass = DB_PASSWORD;
+		// $db = DB_NAME;
 
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
-		$conn = mysqli_connect($host, $user, $pass, $db);
-		if($conn === false){
-			echo "couldn't connect loser";
-			die("ERROR: Could not connect loser." . mysqli_connect_error());
-		}
+		// $conn = mysqli_connect($host, $user, $pass, $db);
+
+		// if($conn === false){
+		// 	echo "couldn't connect loser";
+		// 	die("ERROR: Could not connect loser." . mysqli_connect_error());
+		// }
 
 		$query = "SELECT * FROM logininfo WHERE username='$username' and password='$password'";
-		$result = mysqli_query($conn, $query);
+		$result = mysqli_query($link, $query);
 		if (mysqli_num_rows($result) == 1) {
+
+			$row = mysqli_fetch_assoc($result);
 
 
 			//_SESSION stores key-value pairs across different webpages 
 			$_SESSION['logininfo'] = 'true';
 			$_SESSION['username'] = $username;
-			$_SESSION['password'] = $password;
+			$_SESSION['firstName'] = $row['firstName'];
+			$_SESSION['lastName'] = $row['lastName'];
+			$_SESSION['userID'] = $row['userID'];
 
-			//Where is this suppose to point to?
+			// Where is this suppose to point to?
 			header("Location: home.php");
 
 		}
@@ -122,6 +121,12 @@
 	<body>
 	  <div style="width:80%;margin-left:auto;margin-right:auto;">
 		<!-- <h2 align="center" >Login Form</h2> -->
+
+
+		<?php	if(isset($_SESSION['JustRegistered']) && ($_SESSION['JustRegistered'] == True)){ ?>
+		<label style="width:45%;margin-left:auto;margin-right:auto;"> Registration Successful </label>
+		<?php 		$_SESSION['JustRegistered'] = False;}?>	
+
 
 		<form name="login_form" method="POST">
 		<h1 align="center">Login</h1>
