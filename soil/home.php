@@ -91,7 +91,7 @@
               <a class="nav-link" href="map.php">Map</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="file:///Users/aaronbarge/Desktop/Raspberries/logInPage/longin.html">Log in</a>
+              <a class="nav-link" href="index.php">Log in</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#plant">Plant Info</a>
@@ -215,8 +215,8 @@
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap">
     </script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/javascript/vendor/jquery/jquery.min.js"></script>
+    <script src="/javascript/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </body>
 </html>
