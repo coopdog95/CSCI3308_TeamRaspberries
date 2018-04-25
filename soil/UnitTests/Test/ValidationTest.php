@@ -6,12 +6,7 @@ namespace phpUnitTutorial\Test;
 class RegistrationValidation extends \PHPUnit_Framework_TestCase
 {
 
-	public function setUp(){
-		$firstName = $lastName = $username = $password = $confirm_password = $email = "";
-	}
-
-
-	public function testCorrectInput()
+	public function testCorrectInputEmptyError()
 	{
 
 		$testFirstName = "somefirstname";
@@ -30,6 +25,40 @@ class RegistrationValidation extends \PHPUnit_Framework_TestCase
 		foreach ($returnedErrArray as $key => $value) {
 			$errBoolean = $errBoolean && empty($value);
 		}
+
+
+		$this->assertTrue($errBoolean);
+
+	}
+
+	public function testCorrectInputCorrectReturn()
+	{
+
+		$testFirstName = "somefirstname";
+		$testLastname = "someLastname";
+		$testUsername = "someUsername";
+		$testPassword = "somePassword";
+		$testConfirmPassword = $testPassword;
+		$testEmail = "anemail@domain.com";
+
+		$expectedInputArray  = Array("somefirstname", "someLastname", "someUsername", "somePassword", "anemail@domain.com");
+
+
+		$returnedValidationArray= $this->inputValidate($testFirstName, $testLastname, $testUsername, $testPassword, $testConfirmPassword, $testEmail);
+		$returnedInputArray = $returnedValidationArray[1];
+
+
+		$expectedInputArray  = Array("somefirstname", "someLastname", "someUsername", "somePassword", "anemail@domain.com");
+
+
+		$errBoolean = True;
+		$i = 0;
+		foreach ($returnedInputArray as $key => $value) {
+			$errBoolean = $errBoolean && ($value == $expectedInputArray[$i]);
+			$i++;
+		}
+
+
 
 		$this->assertTrue($errBoolean);
 
@@ -67,8 +96,6 @@ class RegistrationValidation extends \PHPUnit_Framework_TestCase
 		$returnedErrArray = $returnedValidationArray[0];
 		
 		$this->assertFalse(empty($returnedErrArray["confirm_password_err"]));
-
-
 	}	
 
 	function inputValidate($inputFirstname, $inputLastname, $inputUsername, $inputPassword, $inputConfirmPassword, $inputEmail){
