@@ -52,22 +52,22 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Map of Sensor Locations</a>
+        <a class="navbar-brand" href="#">Moisture and Temp Data</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="home.php">Home
-                <span class="sr-only">(current)</span>
-              </a>
+              <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#map">Map</a>
+              <a class="nav-link" href="map.php">Map
+              <span class="sr-only">(current)</span>
+            </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="file:///Users/aaronbarge/Desktop/Raspberries/logInPage/longin.html">Log in</a>
+              <a class="nav-link" href="index.php">Log in</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#plant">Plant Info</a>
@@ -178,8 +178,8 @@
     </div>
     <!-- Bootstrap core JavaScript -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap"> </script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/javascript/vendor/jquery/jquery.min.js"></script>
+    <script src="/javascript/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </body>
 </html>
