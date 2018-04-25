@@ -1,0 +1,30 @@
+
+Schema for sensor info:
+
+mysql> describe sensorinfo;
++----------+---------+------+-----+---------+-------+
+| Field    | Type    | Null | Key | Default | Extra |
++----------+---------+------+-----+---------+-------+
+| sensorID | int(11) | NO   |     | NULL    |       |
+| testDate | date    | NO   |     | NULL    |       |
+| testTime | time    | NO   |     | NULL    |       |
+| temp     | int(11) | NO   |     | NULL    |       |
+| humidity | int(11) | NO   |     | NULL    |       |
+| userID   | int(11) | NO   |     | NULL    |       |
++----------+---------+------+-----+---------+-------+
+
+
+Schema for loginfo:
+
+mysql> describe logininfo;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| userID    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| firstName | varchar(20) | YES  |     | NULL    |                |
+| lastName  | varchar(20) | YES  |     | NULL    |                |
+| username  | varchar(20) | YES  |     | NULL    |                |
+| password  | varchar(20) | YES  |     | NULL    |                |
+| email     | varchar(50) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+
