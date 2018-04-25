@@ -20,19 +20,23 @@
 				echo "LISTENERPHP: ( Key: ".$key.") | (value: ".$value.") \n";
 		}
 
+		//Check incoming payload set properly
 		if(isset($Incoming->handshake['query']['type']) && isset($Incoming->handshake['query']['ID'])){
 			$type = $Incoming->handshake['query']['type'];
 			$ID = $Incoming->handshake['query']['ID'];
 			echo "LISTENERPHP: TYPE = ".$type."| ID: ".$ID." \n";
 
-			if($type == "producer"){
+			//Should pull the data from Mysql, if it's too slow, I'll switch to this
+			//Check that the type of incoming connection is provided
+			if($type == "producer"){ 			//Handle sensors
 				echo "LISTENERPHP: Sensor ".$ID." connected\n";
 				$Incoming->on('INsensor'.$ID, function($data)use($ServerSideSocket, $ID){
 					echo "LISTENERPHP: Got data\n";
-					$ServerSideSocket->emit("OUTsensor".$ID, $data);
+					$ServerSideSocket->emit("OUTsensor".$ID, $data); //Should put a guard here to only update when emit when this sensorID is requested
 				});
 			}
-			elseif($type == "consumer"){
+			elseif($type == "consumer"){			//Handle users
+				//Check that the user has a requestedID
 				if(isset($Incoming->handshake['query']['requestedSensorID'])){
 					$requestedSensorID = $Incoming->handshake['query']['requestedSensorID'];
 					echo "LISTENERPHP: User ".$ID." connected\n";
@@ -61,7 +65,7 @@
 			echo "LISTENERPHP: failed to receive handshake payload\n, disconnecting socket..";
 		    $Incoming->disconnect(true);
 		}
-		});
+	});
 
 
 

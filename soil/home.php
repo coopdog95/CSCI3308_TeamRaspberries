@@ -1,6 +1,11 @@
 <?php
 session_start();
 $userID = $_SESSION["userID"];
+////Once everyone has accounts, only users can access the home.php page.
+// if(empty($userID)){
+//   heading("index.php");
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,34 +56,34 @@ $userID = $_SESSION["userID"];
     <script src="/javascript/socket.io.js"></script>
     <script src="/javascript/dynamicPlot.js"></script>
     <script> 
-      var userID = "<?php echo $userID ?>";
-      var requestedSensorID = 0;
-      // I commented this out so it won't
-      // open a socket everytime you 
-      // connect while develeloping
+      // var userID = "<?php //echo $userID ?>";
+      // var requestedSensorID = 0;
+      // // I commented this out so it won't
+      // // open a socket everytime you 
+      // // connect while develeloping
 
-      // requires the above socket.io.js file
-      // and dynamicPlot.js's updateChart() 
-      // function
+      // // requires the above socket.io.js file
+      // // and dynamicPlot.js's updateChart() 
+      // // function
 
-      // Port for the stream to connect
-      var streamSocket = io("http://0.0.0.0:3006", { query: "type=consumer&ID="+userID+"&requestedSensorID="+String(requestedSensorID) });
+      // // Port for the stream to connect
+      // var streamSocket = io("http://0.0.0.0:3006", { query: "type=consumer&ID="+userID+"&requestedSensorID="+String(requestedSensorID) });
 
-      //Initial connection
-      streamSocket.on("connect", function(){
-        console.log("CLIENT: Successfully connected to port 3002");
-        });
+      // //Initial connection
+      // streamSocket.on("connect", function(){
+      //   console.log("CLIENT: Successfully connected to port 3002");
+      //   });
 
-      //Ready to accept data on the event "to C1"
-      streamSocket.on("OUTsensor" + requestedSensorID, function(data){
-        console.log("CLIENT: data received: ", data);
-        //Update chart with last bit of stream
-        // updateChart(data);
-      })
+      // //Ready to accept data on the event "to C1"
+      // streamSocket.on("OUTsensor" + requestedSensorID, function(data){
+      //   console.log("CLIENT: data received: ", data);
+      //   //Update chart with last bit of stream
+      //   // updateChart(data);
+      // })
 
-      window.onbeforeunload = function () {
-            streamSocket.emit('end');
-        };
+      // window.onbeforeunload = function () {
+      //       streamSocket.emit('end');
+      //   };
     </script>
   </head>
   <body style="overflow: hidden; margin-left: 10%; margin-right: 10%">
