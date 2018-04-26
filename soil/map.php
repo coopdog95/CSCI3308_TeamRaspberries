@@ -100,6 +100,7 @@
       </div>
     </div>
       <!--  pin on off functionality not sure if i want to use this  -->
+
         <!--<style>.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }</style>
         <div>
           <input type="checkbox" checked data-toggle="toggle" data-on="Drop<br>Pins" data-off="Stop<br>Droping" data-style="slow">
@@ -110,6 +111,7 @@
         // In the following example, markers appear when the user clicks on the map.
         // The markers are stored in an array.
         // The user can then click an option to hide, show or delete the markers.
+        
         var map;
         var markers = [];
         function initMap(){
