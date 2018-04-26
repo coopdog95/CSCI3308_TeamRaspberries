@@ -1,14 +1,14 @@
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 /*
-  Defining the chart and data point outside
-  the scope of the below function, so that 
-  it is visible to the socket script in home.php
-  under the dynamicPlot.js. 
-  These two variables will be used in the updateChart function
-  (also should be moved outside the below function's
-  scope), which will be called by the stream when the arduino
-  (or whatever connects to the socket) is called.
+Defining the chart and data point outside
+the scope of the below function, so that 
+it is visible to the socket script in home.php
+under the dynamicPlot.js. 
+These two variables will be used in the updateChart function
+(also should be moved outside the below function's
+scope), which will be called by the stream when the arduino
+(or whatever connects to the socket) is called.
 */
 var chart;
 var dataPoints;
@@ -16,7 +16,7 @@ var outsideTEMP;
 var outsideHUMI;
 //-----------------------------------------------------------------------------
 window.onload = function() {
-  $.ajax({url:'https://api.forecast.io/forecast/35152a0bbe2821ad1b420c93a70db089/40.014984,-105.270546', dataType:"jsonp"}).then(function(data) {
+  $.ajax({url:'https://api.forecast.io/forecast/02f2f18e229290d575f6542e1a75a41c/40.014984,-105.270546', dataType:"jsonp"}).then(function(data) {
      outsideTEMP = (data.currently.temperature - 32) * (5/9);
      outsideHUMI = data.currently.humidity;
      console.log(outsideTEMP);
@@ -208,7 +208,7 @@ window.onload = function() {
         dataPoints : dataPoints6
       },{
         type: "line",
-        showInLegend: true,
+        showInLegend: false,
         name: "Sensor 7",
         //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
@@ -280,7 +280,7 @@ window.onload = function() {
     dataPoints4.push({y : yVal4});
     dataPoints5.push({y : yVal5});
     dataPoints6.push({y : yVal6});
-    $.ajax({url:'https://api.forecast.io/forecast/35152a0bbe2821ad1b420c93a70db089/40.014984,-105.270546', dataType:"jsonp"}).then(function(data) {
+    $.ajax({url:'https://api.forecast.io/forecast/02f2f18e229290d575f6542e1a75a41c/40.014984,-105.270546', dataType:"jsonp"}).then(function(data) {
      outsideTEMP = (data.currently.temperature - 32) * (5/9);
      outsideHUMI = data.currently.humidity;
 
