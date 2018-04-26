@@ -19,6 +19,9 @@
         body {
           padding-top: 56px;
         }
+        .container{
+          max-width: 970px;
+        }
       }
       #map {
         height: 100%;
@@ -52,22 +55,25 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Sensor Locations</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav pull-left">
             <li class="nav-item">
-              <a class="nav-link" href="home.php">Home</a>
+              <a class="nav-link" href="home.php">Home
+                <span class="sr-only">(current)</span>
+              </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="map.php">Map
-              <span class="sr-only">(current)</span>
-            </a>
+              <a class="nav-link" href="map.php">Map</a>
             </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav pull-right"> 
             <li class="nav-item">
-              <a class="nav-link" href="index.php">User</a>
+              <a class="nav-link" href="index.php"><img src="resources/userlogin.png" alt="User" style="width:4%; float: right; opacity: 0.5"></a>
             </li>
           </ul>
         </div>

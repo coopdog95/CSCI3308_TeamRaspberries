@@ -57,7 +57,7 @@
 		<!-- Bootstrap core CSS -->
     	<link href="/javascript/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<style>
-		body {font-family: Arial, Helvetica, sans-serif; margin: 6%;overflow: hidden;}
+		body {font-family: Arial, Helvetica, sans-serif; padding-top: 4%;}
 		form {border: 3px solid #f1f1f1;}
 
 		input[type=text], input[type=password] {
@@ -122,30 +122,32 @@
 	</head>
 	<body>
 		<!-- Navigation -->
-	    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	      <div class="container">
-	        <a class="navbar-brand" href="#">User Profile</a>
-	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="navbar-toggler-icon"></span>
-	        </button>
-	        <div class="collapse navbar-collapse" id="navbarResponsive">
-	          <ul class="navbar-nav ml-auto">
-	            <li class="nav-item">
-	              <a class="nav-link" href="home.php">Home
-	                <span class="sr-only">(current)</span>
-	              </a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="map.php">Map</a>
-	            </li>
-	            <li class="nav-item active">
-	              <a class="nav-link" href="index.php">User</a>
-	            </li>
-	            </li>
-	          </ul>
-	        </div>
-	      </div>
-	    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container" style="padding: 0px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav pull-left">
+            <li class="nav-item">
+              <a class="nav-link" href="home.php">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="map.php">Map</a>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav pull-right"> 
+            <li class="nav-item active">
+              <a class="nav-link" href="index.php"><img src="resources/userlogin.png" alt="User" style="width:4%; float: right; opacity: 1"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 	  <div style="width:80%;margin-left:auto;margin-right:auto;">
 		<!-- <h2 align="center" >Login Form</h2> -->
 
