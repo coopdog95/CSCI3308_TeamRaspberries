@@ -26,7 +26,7 @@ $userID = $_SESSION["userID"];
       $(document).ready(function() {
         var url = 'https://api.forecast.io/forecast/2f658dadf40d90a34f953d0e92dab8c9/40.014984,-105.270546';
         $.ajax({url:url, dataType:"jsonp"}).then(function(data) {
-           $("#temp").text(((data.currently.temperature - 32) * (5/9)).toFixed(1) + " °C");
+           $("#temp").text((data.currently.temperature).toFixed(1) + " °F");
            $("#humidity").text(data.currently.humidity + "%");
          });
        });
@@ -106,7 +106,7 @@ $userID = $_SESSION["userID"];
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="">Home
+              <a class="nav-link" href="home.php">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -114,16 +114,7 @@ $userID = $_SESSION["userID"];
               <a class="nav-link" href="map.php">Map</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Log in</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#plant">Plant Info</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#user">User</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#logout">Log out</a>
+              <a class="nav-link" href="index.php">User</a>
             </li>
           </ul>
         </div>
@@ -144,28 +135,6 @@ $userID = $_SESSION["userID"];
         <h4><b>Outside humidity:</b></h4>    <p id="humidity">Loading . . .</p>
       </div>
     </div>
-    
-    <!-- This is the drop down links menu -->
-    <!-- <div class="row align-items-center" >
-      <div class="col-auto" style="background-color: white;"></div>
-      <div class="col-auto" style="background-color: white;">
-        <div style="background-color: white;" class="dropdown show">
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Pin settings
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a onclick="clearMarkers();" class="dropdown-item" href="#">Hide markers</a>
-            <a onclick="showMarkers();" class="dropdown-item" href="#">Show All Markers</a>
-            <a onclick="deleteMarkers();" class="dropdown-item" href="#">Delete Markers</a>
-          </div>
-        </div>
-      </div>
-    </div> -->
-      <!--  pin on off functionality not sure if i want to use this  -->
-        <!--<style>.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }</style>
-        <div>
-          <input type="checkbox" checked data-toggle="toggle" data-on="Drop<br>Pins" data-off="Stop<br>Droping" data-style="slow">
-        </div> -->
     <!-- Bootstrap core JavaScript -->
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap">

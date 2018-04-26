@@ -57,7 +57,7 @@
 		<!-- Bootstrap core CSS -->
     	<link href="/javascript/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<style>
-		body {font-family: Arial, Helvetica, sans-serif;}
+		body {font-family: Arial, Helvetica, sans-serif; margin: 6%;overflow: hidden;}
 		form {border: 3px solid #f1f1f1;}
 
 		input[type=text], input[type=password] {
@@ -124,7 +124,7 @@
 		<!-- Navigation -->
 	    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	      <div class="container">
-	        <a class="navbar-brand" href="#">Moisture and Temp Data</a>
+	        <a class="navbar-brand" href="#">User Profile</a>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
 	        </button>
@@ -139,16 +139,8 @@
 	              <a class="nav-link" href="map.php">Map</a>
 	            </li>
 	            <li class="nav-item active">
-	              <a class="nav-link" href="index.php">Log in</a>
+	              <a class="nav-link" href="index.php">User</a>
 	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="#plant">Plant Info</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="#user">User</a>
-	            </li>
-	            <li class="nav-item">
-	              <a class="nav-link" href="#logout">Log out</a>
 	            </li>
 	          </ul>
 	        </div>

@@ -34,7 +34,7 @@ window.onload = function() {
         }
       },
       axisY: {
-        suffix: " °C",
+        suffix: " °F",
         crosshair: {
           enabled: true,
           snapToDataPoint: true
@@ -100,11 +100,11 @@ window.onload = function() {
     },
     axisY: {
       title: "Temperature",
-      suffix: " °C"
+      suffix: " °F"
     },
     data: [{
       type: "column", 
-      yValueFormatString: "#,###.## °C",
+      yValueFormatString: "#,###.## °F",
       indexLabel: "{y}",
       dataPoints: [
         { label: "sensor1", y: 22 },
@@ -225,10 +225,10 @@ window.onload = function() {
 //-----------------------------------------------------------------------------
   var userChangeBounds = function() {
     console.log(upperExtreme,upperMid,lowerMid,lowerExtreme);
-    upperExtreme = Number(prompt("Upper emergency boundary:", "°C"));
-    upperMid = Number(prompt("Upper warning boundary:", "°C"));
-    lowerMid = Number(prompt("Lower warning boundary:", "°C"));
-    lowerExtreme = Number(prompt("Lower emergency boundary:", "°C"));
+    upperExtreme = Number(prompt("Upper emergency boundary for temperature:", "°F"));
+    upperMid = Number(prompt("Upper warning boundary for temperature:", "°F"));
+    lowerMid = Number(prompt("Lower warning boundary for temperature:", "°F"));
+    lowerExtreme = Number(prompt("Lower emergency boundary for temperature:", "°F"));
     console.log(upperExtreme,upperMid,lowerMid,lowerExtreme);
   }
   document.getElementById("changeBounds").addEventListener("click", userChangeBounds);
