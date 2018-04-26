@@ -1,14 +1,14 @@
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 /*
-Defining the chart and data point outside
-the scope of the below function, so that 
-it is visible to the socket script in home.php
-under the dynamicPlot.js. 
-These two variables will be used in the updateChart function
-(also should be moved outside the below function's
-scope), which will be called by the stream when the arduino
-(or whatever connects to the socket) is called.
+  Defining the chart and data point outside
+  the scope of the below function, so that 
+  it is visible to the socket script in home.php
+  under the dynamicPlot.js. 
+  These two variables will be used in the updateChart function
+  (also should be moved outside the below function's
+  scope), which will be called by the stream when the arduino
+  (or whatever connects to the socket) is called.
 */
 var chart;
 var dataPoints;
