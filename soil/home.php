@@ -1,3 +1,12 @@
+<?php
+session_start();
+$userID = $_SESSION["userID"];
+////Once everyone has accounts, only users can access the home.php page.
+// if(empty($userID)){
+//   heading("index.php");
+// }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,17 +56,18 @@
     <script src="/javascript/socket.io.js"></script>
     <script src="/javascript/dynamicPlot.js"></script>
     <script> 
+      // var userID = "<?php //echo $userID ?>";
+      // var requestedSensorID = 0;
+      // // I commented this out so it won't
+      // // open a socket everytime you 
+      // // connect while develeloping
 
-      //I commented this out so it won't
-      //open a socket everytime you 
-      //connect while develeloping
+      // // requires the above socket.io.js file
+      // // and dynamicPlot.js's updateChart() 
+      // // function
 
-      //requires the above socket.io.js file
-      //and dynamicPlot.js's updateChart() 
-      //function
-
-      ////Port for the stream to connect
-      // var streamSocket = io("http://0.0.0.0:3006");
+      // // Port for the stream to connect
+      // var streamSocket = io("http://0.0.0.0:3006", { query: "type=consumer&ID="+userID+"&requestedSensorID="+String(requestedSensorID) });
 
       // //Initial connection
       // streamSocket.on("connect", function(){
@@ -65,11 +75,15 @@
       //   });
 
       // //Ready to accept data on the event "to C1"
-      // streamSocket.on("to C1", function(data){
+      // streamSocket.on("OUTsensor" + requestedSensorID, function(data){
       //   console.log("CLIENT: data received: ", data);
       //   //Update chart with last bit of stream
-      //   updateChart(data);
+      //   // updateChart(data);
       // })
+
+      // window.onbeforeunload = function () {
+      //       streamSocket.emit('end');
+      //   };
     </script>
   </head>
   <body style="overflow: hidden; margin-left: 10%; margin-right: 10%">
@@ -91,7 +105,7 @@
               <a class="nav-link" href="map.php">Map</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="file:///Users/aaronbarge/Desktop/Raspberries/logInPage/longin.html">Log in</a>
+              <a class="nav-link" href="index.php">Log in</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#plant">Plant Info</a>
@@ -215,8 +229,8 @@
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap">
     </script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/javascript/vendor/jquery/jquery.min.js"></script>
+    <script src="/javascript/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </body>
 </html>

@@ -1,10 +1,9 @@
 <?php
-	
+
 	require_once 'vendor/autoload.php';
 
 	use Workerman\Worker;
 	use PHPSocketIO\SocketIO;
-
 
 
 	/*This successfully accepts data from some client
@@ -15,49 +14,59 @@
 	$ServerSideSocket = new SocketIO(3006);
 
 	$ServerSideSocket->on('connection', function($Incoming)use($ServerSideSocket){
-		echo "Client successfully connected\n";
+		echo "LISTENERPHP: CONNECTION\n";
+
+		foreach ($Incoming->handshake as $key => $value) {
+				echo "LISTENERPHP: ( Key: ".$key.") | (value: ".$value.") \n";
+		}
+
+		//Check incoming payload set properly
+		if(isset($Incoming->handshake['query']['type']) && isset($Incoming->handshake['query']['ID'])){
+			$type = $Incoming->handshake['query']['type'];
+			$ID = $Incoming->handshake['query']['ID'];
+			echo "LISTENERPHP: TYPE = ".$type."| ID: ".$ID." \n";
+
+			//Should pull the data from Mysql, if it's too slow, I'll switch to this
+			//Check that the type of incoming connection is provided
+			if($type == "producer"){ 			//Handle sensors
+				echo "LISTENERPHP: Sensor ".$ID." connected\n";
+				$Incoming->on('INsensor'.$ID, function($data)use($ServerSideSocket, $ID){
+					echo "LISTENERPHP: Got data\n";
+					$ServerSideSocket->emit("OUTsensor".$ID, $data); //Should put a guard here to only update when emit when this sensorID is requested
+				});
+			}
+			elseif($type == "consumer"){			//Handle users
+				//Check that the user has a requestedID
+				if(isset($Incoming->handshake['query']['requestedSensorID'])){
+					$requestedSensorID = $Incoming->handshake['query']['requestedSensorID'];
+					echo "LISTENERPHP: User ".$ID." connected\n";
+					echo "LISTENERPHP: User requested sensor ".$requestedSensorID."\n";
+				}
+				else{
+					echo "LISTENERPHP: User payload requestedSensorID error";
+				}
+			}
+			else{
+				echo "LISTENERPHP: Unknown type of connection, disconnecting socket..";
+			    $Incoming->disconnect(true);
+			}
 
 
-		/*there has to be a global event here to accept sensorID as
-		payload from the sensor, set it to some variable.
+			$Incoming->on('end', function (){
+			    $Incoming->disconnect(true);
+			});
 
 
-
-		/*is there a PHP way of doing string "from S{}".format(sensorID) 
-		Eeach sensorID must have its own event. So we insert the data 
-		with the appropriate sensorID, while also sending it to
-		the webpage of the user that is associated with this sensorID
-		*/
-
-
-		//Any data from sensor1 triggers 'from S1' event
-		$Incoming->on('from S1', function($data)use($ServerSideSocket){
-			echo "Got data\n";
-			//Once triggered, we emit the event 'to C1' to the web browser
-			$ServerSideSocket->emit("to C1", $data);
-		});
-
-
-		$Incoming->on('from S2', function($data)use($ServerSideSocket){
-			echo "Got data\n";
-			//Once triggered, we emit the event 'to C1' to the web browser
-			$ServerSideSocket->emit("to C2", $data);
-		});		
-
-		/*On the event 'from S1' i.e the sensor with sensorID = 1, connects to the server
-		and uploads information, we should probably insert the intercepted
-		data (sensor data relayed from an arduino) to the table with sensorID = 1, as well as
-		send it to the user's browser*/
-
-
-		// $Incoming->on('from S1', function($data){
-		// 	//database operation here
-		// })
-
-		$Incoming->on('disconnect', function(){
-			echo "Client disconnected\n";
-		});
+			$Incoming->on('disconnect', function(){
+				echo "LISTENERPHP: Client disconnected\n";
+			});
+		}
+		else{
+			echo "LISTENERPHP: failed to receive handshake payload\n, disconnecting socket..";
+		    $Incoming->disconnect(true);
+		}
 	});
+
 
 
 	Worker::runAll();
