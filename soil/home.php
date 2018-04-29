@@ -87,8 +87,7 @@ echo $output;
       console.log("data" + userID)
       streamSocket.on("data" + userID, function(data){
         console.log("CLIENT: old data received: ", data);
-        //Update chart with last bit of stream
-        // updateChart(data);
+        data["temp"]
       });
 
 
