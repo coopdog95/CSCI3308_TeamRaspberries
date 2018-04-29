@@ -12,16 +12,8 @@
 */
 var chart;
 var dataPoints;
-var outsideTEMP;
-var outsideHUMI;
 //-----------------------------------------------------------------------------
 window.onload = function() {
-  $.ajax({url:'https://api.forecast.io/forecast/35152a0bbe2821ad1b420c93a70db089/40.014984,-105.270546', dataType:"jsonp"}).then(function(data) {
-     outsideTEMP = (data.currently.temperature - 32) * (5/9);
-     outsideHUMI = data.currently.humidity;
-     console.log(outsideTEMP);
-     console.log(outsideHUMI);
-   });
 //-----------------------------------------------------------------------------     
   var dataPoints1 = [{y : 22}];
   var dataPoints2 = [{y : 23}];
@@ -29,8 +21,6 @@ window.onload = function() {
   var dataPoints4 = [{y : 25}];
   var dataPoints5 = [{y : 26}];
   var dataPoints6 = [{y : 27}];
-  var dataPointsTEMP = [{y : outsideTEMP}];
-  var dataPointsHUMI = [{y : outsideHUMI}];
   var line_chart_TEMP = new CanvasJS.Chart("chartContainer_TEMP", {
       title : {
         text: "Loading . . ."
@@ -44,7 +34,7 @@ window.onload = function() {
         }
       },
       axisY: {
-        suffix: " °C",
+        suffix: " °F",
         crosshair: {
           enabled: true,
           snapToDataPoint: true
@@ -101,14 +91,6 @@ window.onload = function() {
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DDBB00",
         dataPoints : dataPoints6
-      },{
-        type: "line",
-        showInLegend: false,
-        name: "Sensor 7",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#DDBBBB",
-        dataPoints : dataPointsTEMP
       }]
   });
 //-----------------------------------------------------------------------------
@@ -118,11 +100,11 @@ window.onload = function() {
     },
     axisY: {
       title: "Temperature",
-      suffix: " °C"
+      suffix: " °F"
     },
     data: [{
       type: "column", 
-      yValueFormatString: "#,###.## °C",
+      yValueFormatString: "#,###.## °F",
       indexLabel: "{y}",
       dataPoints: [
         { label: "sensor1", y: 22 },
@@ -131,7 +113,6 @@ window.onload = function() {
         { label: "sensor4", y: 25 },
         { label: "sensor5", y: 26 },
         { label: "sensor6", y: 27 },
-        { label: "OUTSIDE", y:outsideTEMP}
       ]
     }]
   });
@@ -206,14 +187,6 @@ window.onload = function() {
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DDBB00",
         dataPoints : dataPoints6
-      },{
-        type: "line",
-        showInLegend: true,
-        name: "Sensor 7",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#DDBBBB",
-        dataPoints : dataPointsHUMI
       }]
   });
 //-----------------------------------------------------------------------------
@@ -236,7 +209,6 @@ window.onload = function() {
         { label: "sensor4", y: 0.25 },
         { label: "sensor5", y: 0.26 },
         { label: "sensor6", y: 0.27 },
-        { label: "OUTSIDE", y: outsideHUMI}
       ]
     }]
   });
@@ -253,10 +225,10 @@ window.onload = function() {
 //-----------------------------------------------------------------------------
   var userChangeBounds = function() {
     console.log(upperExtreme,upperMid,lowerMid,lowerExtreme);
-    upperExtreme = Number(prompt("Upper emergency boundary:", "°C"));
-    upperMid = Number(prompt("Upper warning boundary:", "°C"));
-    lowerMid = Number(prompt("Lower warning boundary:", "°C"));
-    lowerExtreme = Number(prompt("Lower emergency boundary:", "°C"));
+    upperExtreme = Number(prompt("Upper emergency boundary for temperature:", "°F"));
+    upperMid = Number(prompt("Upper warning boundary for temperature:", "°F"));
+    lowerMid = Number(prompt("Lower warning boundary for temperature:", "°F"));
+    lowerExtreme = Number(prompt("Lower emergency boundary for temperature:", "°F"));
     console.log(upperExtreme,upperMid,lowerMid,lowerExtreme);
   }
   document.getElementById("changeBounds").addEventListener("click", userChangeBounds);
@@ -280,16 +252,9 @@ window.onload = function() {
     dataPoints4.push({y : yVal4});
     dataPoints5.push({y : yVal5});
     dataPoints6.push({y : yVal6});
-    $.ajax({url:'https://api.forecast.io/forecast/35152a0bbe2821ad1b420c93a70db089/40.014984,-105.270546', dataType:"jsonp"}).then(function(data) {
-     outsideTEMP = (data.currently.temperature - 32) * (5/9);
-     outsideHUMI = data.currently.humidity;
 
-     dataPointsTEMP.push({y : outsideTEMP});
-     dataPointsHUMI.push({y : outsideHUMI});
-    });
-
-    yValsTEMP = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6,outsideTEMP]
-    yValsHUMI = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6,outsideHUMI]
+    yValsTEMP = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6]
+    yValsHUMI = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6]
 
     var d = new Date();
     var month = (d.getMonth() < '10') ? ('0' + d.getMonth()) : d.getMonth();

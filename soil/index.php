@@ -5,36 +5,40 @@
 
 	require_once 'config.php';
 
-
+	session_start();
 
 	if($_POST){
 
-		$host = DB_SERVER;
-		$user = DB_USERNAME;
-		$pass = DB_PASSWORD;
-		$db = DB_NAME;
+		// $host = DB_SERVER;
+		// $user = DB_USERNAME;
+		// $pass = DB_PASSWORD;
+		// $db = DB_NAME;
 
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
-		$conn = mysqli_connect($host, $user, $pass, $db);
-		if($conn === false){
-			echo "couldn't connect loser";
-			die("ERROR: Could not connect loser." . mysqli_connect_error());
-		}
+		// $conn = mysqli_connect($host, $user, $pass, $db);
 
-		$query = "SELECT * FROM LoginInfo WHERE username='$username' and password='$password'";
-		$result = mysqli_query($conn, $query);
+		// if($conn === false){
+		// 	echo "couldn't connect loser";
+		// 	die("ERROR: Could not connect loser." . mysqli_connect_error());
+		// }
+
+		$query = "SELECT * FROM logininfo WHERE username='$username' and password='$password'";
+		$result = mysqli_query($link, $query);
 		if (mysqli_num_rows($result) == 1) {
+
+			$row = mysqli_fetch_assoc($result);
 
 
 			//_SESSION stores key-value pairs across different webpages 
-			session_start();
-			$_SESSION['LoginInfo'] = 'true';
+			$_SESSION['logininfo'] = 'true';
 			$_SESSION['username'] = $username;
-			$_SESSION['password'] = $password;
+			$_SESSION['firstName'] = $row['firstName'];
+			$_SESSION['lastName'] = $row['lastName'];
+			$_SESSION['userID'] = $row['userID'];
 
-			//Where is this suppose to point to?
+			// Where is this suppose to point to?
 			header("Location: home.php");
 
 		}
@@ -50,8 +54,10 @@
 	<head>
 		<title>Login</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap core CSS -->
+    	<link href="/javascript/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<style>
-		body {font-family: Arial, Helvetica, sans-serif;}
+		body {font-family: Arial, Helvetica, sans-serif; padding-top: 4%;}
 		form {border: 3px solid #f1f1f1;}
 
 		input[type=text], input[type=password] {
@@ -115,8 +121,41 @@
 		</style>
 	</head>
 	<body>
+		<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container" style="padding: 0px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav pull-left">
+            <li class="nav-item">
+              <a class="nav-link" href="home.php">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="map.php">Map</a>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav pull-right"> 
+            <li class="nav-item active">
+              <a class="nav-link" href="index.php"><img src="resources/userlogin.png" alt="User" style="width:4%; float: right; opacity: 1"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 	  <div style="width:80%;margin-left:auto;margin-right:auto;">
 		<!-- <h2 align="center" >Login Form</h2> -->
+
+
+		<?php	if(isset($_SESSION['JustRegistered']) && ($_SESSION['JustRegistered'] == True)){ ?>
+		<label style="width:45%;margin-left:auto;margin-right:auto;"> Registration Successful </label>
+		<?php 		$_SESSION['JustRegistered'] = False;}?>	
+
 
 		<form name="login_form" method="POST">
 		<h1 align="center">Login</h1>
