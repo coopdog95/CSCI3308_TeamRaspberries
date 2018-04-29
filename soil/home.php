@@ -9,11 +9,9 @@ $userID = $_SESSION["userID"];
 ?> -->
 
 <?php 
-
 $command = escapeshellcmd('tempmap.py');
 $output = shell_exec($command);
 echo $output;
-
 ?>
 
 <!DOCTYPE html>

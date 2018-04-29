@@ -1,50 +1,35 @@
 <!DOCTYPE html>
 
 <?php
-
-
 	require_once 'config.php';
-
 	session_start();
-
 	if($_POST){
-
 		// $host = DB_SERVER;
 		// $user = DB_USERNAME;
 		// $pass = DB_PASSWORD;
 		// $db = DB_NAME;
-
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
 		// $conn = mysqli_connect($host, $user, $pass, $db);
-
 		// if($conn === false){
 		// 	echo "couldn't connect loser";
 		// 	die("ERROR: Could not connect loser." . mysqli_connect_error());
 		// }
-
 		$query = "SELECT * FROM logininfo WHERE username='$username' and password='$password'";
 		$result = mysqli_query($link, $query);
 		if (mysqli_num_rows($result) == 1) {
-
 			$row = mysqli_fetch_assoc($result);
-
-
 			//_SESSION stores key-value pairs across different webpages 
 			$_SESSION['logininfo'] = 'true';
 			$_SESSION['username'] = $username;
 			$_SESSION['firstName'] = $row['firstName'];
 			$_SESSION['lastName'] = $row['lastName'];
 			$_SESSION['userID'] = $row['userID'];
-
 			// Where is this suppose to point to?
 			header("Location: home.php");
-
 		}
 		else {
-				echo "wrong username or password";
-
+			echo "wrong username or password";
 		}
 	}
 ?>

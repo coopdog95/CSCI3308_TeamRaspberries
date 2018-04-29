@@ -9,6 +9,8 @@
         src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.js'></script>
 <link type='text/css'
       href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet' />
+<!-- Bootstrap core CSS -->
+<link href="/javascript/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <style type='text/css'>
     body { margin:0; padding:0; }
     .map { position:absolute; top:0; bottom:0; width:100%; }
