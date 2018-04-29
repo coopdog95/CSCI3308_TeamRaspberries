@@ -59,7 +59,7 @@ echo $output;
     <script src="/javascript/dynamicPlot.js"></script>
     <script> 
     
-      var userID = "<?php //echo $userID ?>";
+      var userID = "<?php echo $userID ?>";
       var requestedSensorID = 88;
       // I commented this out so it won't
       // open a socket everytime you 
@@ -70,7 +70,7 @@ echo $output;
       // function
 
       // Port for the stream to connect
-      var streamSocket = io("http://0.0.0.0:3006", { query: "type=consumer&ID="+userID+"&requestedSensorID="+String(requestedSensorID) });
+      var streamSocket = io("http://0.0.0.0:3008", { query: "type=consumer&ID="+userID+"&requestedSensorID="+String(requestedSensorID) });
 
       //Initial connection
       streamSocket.on("connect", function(){
@@ -86,8 +86,8 @@ echo $output;
 
       console.log("data" + userID)
       streamSocket.on("data" + userID, function(data){
-        console.log("CLIENT: old data received: ", data);
-        data["temp"]
+        // console.log("CLIENT: old data received: ", data["temp"]);
+        updateChart(data["temp"],data["humidity"],data["testDate"],data["testTime"]);
       });
 
 

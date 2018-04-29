@@ -11,7 +11,7 @@
 	So the data can now go like this:
 	(arduino -> server -> client) 
 	all real time.*/
-	$ServerSideSocket = new SocketIO(3006);
+	$ServerSideSocket = new SocketIO(3008);
 
 	//$teste=mysqli_connect("den1.mysql6.gear.host", "proj", "password.","proj") or die("Cannot connect to host"); 
 	 // mysqli_select_db("proj",$teste) or die("Database does not exists."); 
