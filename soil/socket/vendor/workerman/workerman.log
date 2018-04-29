@@ -299,3 +299,142 @@ Stack trace:
 2018-04-25 16:57:35 pid:28306 Workerman[listen.php] stopping ...
 2018-04-25 16:57:35 pid:28306 Workerman[listen.php] stopping ...
 2018-04-25 16:57:35 pid:28306 Workerman[listen.php] has been stopped
+2018-04-30 04:31:42 pid:4281 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:32:12 pid:4281 Workerman[listen.php] stopping ...
+2018-04-30 04:32:12 pid:4281 Workerman[listen.php] stopping ...
+2018-04-30 04:32:12 pid:4281 Workerman[listen.php] has been stopped
+2018-04-30 04:33:12 pid:4333 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:35:48 pid:4333 Workerman[listen.php] stopping ...
+2018-04-30 04:35:48 pid:4333 Workerman[listen.php] stopping ...
+2018-04-30 04:35:48 pid:4333 Workerman[listen.php] has been stopped
+2018-04-30 04:35:48 pid:4427 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:36:02 pid:4427 Workerman[listen.php] stopping ...
+2018-04-30 04:36:02 pid:4427 Workerman[listen.php] stopping ...
+2018-04-30 04:36:02 pid:4427 Workerman[listen.php] has been stopped
+2018-04-30 04:47:48 pid:4944 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:48:01 pid:4944 Workerman[listen.php] stopping ...
+2018-04-30 04:48:01 pid:4944 Workerman[listen.php] stopping ...
+2018-04-30 04:48:01 pid:4944 Workerman[listen.php] has been stopped
+2018-04-30 04:48:51 pid:5087 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:50:00 pid:5087 Workerman[listen.php] stopping ...
+2018-04-30 04:50:00 pid:5087 Workerman[listen.php] stopping ...
+2018-04-30 04:50:00 pid:5087 Workerman[listen.php] has been stopped
+2018-04-30 04:50:01 pid:5239 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:51:17 pid:5239 Workerman[listen.php] stopping ...
+2018-04-30 04:51:17 pid:5239 Workerman[listen.php] stopping ...
+2018-04-30 04:51:17 pid:5239 Workerman[listen.php] has been stopped
+2018-04-30 04:51:37 pid:5476 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:51:38 pid:5476 Workerman[listen.php] stopping ...
+2018-04-30 04:51:38 pid:5476 Workerman[listen.php] stopping ...
+2018-04-30 04:51:38 pid:5476 Workerman[listen.php] has been stopped
+2018-04-30 04:51:40 pid:5493 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:51:44 pid:5501 Worker process terminated with ERROR: E_ERROR "Uncaught Error: Call to undefined function emit() in /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/listen.php:70
+Stack trace:
+#0 [internal function]: {closure}(Object(PHPSocketIO\Socket))
+#1 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('connection', Object(PHPSocketIO\Socket))
+#3 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Nsp.php(102): call_user_func_array(Array, Array)
+#4 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Nsp.php(68): PHPSocketIO\Nsp->emit('connection', Object(PHPSocketIO\Socket))
+#5 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(64): PHPSocketIO\Nsp->add(Object(PHPSocketIO\Client), Object(PHPSocketIO\Nsp), Array)
+#6 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/worke in /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/listen.php on line 70"
+2018-04-30 04:51:44 pid:5493 worker[PHPSocketIO:5501] exit with status 65280
+2018-04-30 04:52:13 pid:5493 Workerman[listen.php] stopping ...
+2018-04-30 04:52:13 pid:5493 Workerman[listen.php] stopping ...
+2018-04-30 04:52:13 pid:5493 Workerman[listen.php] has been stopped
+2018-04-30 04:52:15 pid:5531 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:52:21 pid:5539 Worker process terminated with ERROR: E_ERROR "Uncaught Error: Call to undefined function emit() in /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/listen.php:70
+Stack trace:
+#0 [internal function]: {closure}(Object(PHPSocketIO\Socket))
+#1 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('connection', Object(PHPSocketIO\Socket))
+#3 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Nsp.php(102): call_user_func_array(Array, Array)
+#4 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Nsp.php(68): PHPSocketIO\Nsp->emit('connection', Object(PHPSocketIO\Socket))
+#5 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(64): PHPSocketIO\Nsp->add(Object(PHPSocketIO\Client), Object(PHPSocketIO\Nsp), Array)
+#6 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/worke in /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/listen.php on line 70"
+2018-04-30 04:52:21 pid:5531 worker[PHPSocketIO:5539] exit with status 65280
+2018-04-30 04:52:29 pid:5531 Workerman[listen.php] stopping ...
+2018-04-30 04:52:29 pid:5531 Workerman[listen.php] stopping ...
+2018-04-30 04:52:29 pid:5531 Workerman[listen.php] has been stopped
+2018-04-30 04:53:37 pid:5635 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 04:53:54 pid:5635 Workerman[listen.php] stopping ...
+2018-04-30 04:53:54 pid:5635 Workerman[listen.php] stopping ...
+2018-04-30 04:53:54 pid:5635 Workerman[listen.php] has been stopped
+2018-04-30 05:03:47 pid:5929 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:03:53 pid:5937 Error: Call to a member function disconnect() on null in /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/listen.php:82
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #52)
+#22 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /home/aka/Desktop/stuff/workingsoilwebsite/soil/socket/listen.php(98): Workerman\Worker::runAll()
+#29 {main}
+2018-04-30 05:03:53 pid:5937 Worker process terminated
+2018-04-30 05:03:53 pid:5929 worker[PHPSocketIO:5937] exit with status 64000
+2018-04-30 05:03:58 pid:5929 Workerman[listen.php] stopping ...
+2018-04-30 05:03:58 pid:5929 Workerman[listen.php] stopping ...
+2018-04-30 05:03:58 pid:5929 Workerman[listen.php] has been stopped
+2018-04-30 05:05:26 pid:6052 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:05:33 pid:6052 Workerman[listen.php] stopping ...
+2018-04-30 05:05:33 pid:6052 Workerman[listen.php] stopping ...
+2018-04-30 05:05:33 pid:6052 Workerman[listen.php] has been stopped
+2018-04-30 05:26:09 pid:7246 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:26:10 pid:7246 Workerman[listen.php] stopping ...
+2018-04-30 05:26:10 pid:7246 Workerman[listen.php] stopping ...
+2018-04-30 05:26:10 pid:7246 Workerman[listen.php] has been stopped
+2018-04-30 05:33:14 pid:42598 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:33:20 pid:42605 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:33:20 pid:42605 Workerman[soil/socket/listen.php] already running
+2018-04-30 05:33:33 pid:42609 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:33:33 pid:42609 Workerman[soil/socket/listen.php] already running
+2018-04-30 05:34:41 pid:42617 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:34:41 pid:42617 Workerman[soil/socket/listen.php] already running
+2018-04-30 05:36:23 pid:42598 Workerman[listen.php] stopping ...
+2018-04-30 05:36:23 pid:42598 Workerman[listen.php] has been stopped
+2018-04-30 05:36:55 pid:42636 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:38:16 pid:42636 Workerman[listen.php] stopping ...
+2018-04-30 05:38:16 pid:42636 Workerman[listen.php] stopping ...
+2018-04-30 05:38:16 pid:42636 Workerman[listen.php] has been stopped
+2018-04-30 05:38:19 pid:42648 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:40:47 pid:42648 Workerman[listen.php] stopping ...
+2018-04-30 05:40:47 pid:42648 Workerman[listen.php] stopping ...
+2018-04-30 05:40:47 pid:42648 Workerman[listen.php] has been stopped
+2018-04-30 05:40:54 pid:42665 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:42:33 pid:42665 Workerman[listen.php] stopping ...
+2018-04-30 05:42:33 pid:42665 Workerman[listen.php] stopping ...
+2018-04-30 05:42:33 pid:42665 Workerman[listen.php] has been stopped
+2018-04-30 05:42:36 pid:42671 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:43:05 pid:42671 Workerman[listen.php] stopping ...
+2018-04-30 05:43:05 pid:42671 Workerman[listen.php] stopping ...
+2018-04-30 05:43:05 pid:42671 Workerman[listen.php] has been stopped
+2018-04-30 05:43:06 pid:42678 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:46:00 pid:42678 Workerman[listen.php] stopping ...
+2018-04-30 05:46:00 pid:42678 Workerman[listen.php] stopping ...
+2018-04-30 05:46:00 pid:42678 Workerman[listen.php] has been stopped
+2018-04-30 05:46:02 pid:42691 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-04-30 05:47:49 pid:42691 Workerman[listen.php] stopping ...
+2018-04-30 05:47:49 pid:42691 Workerman[listen.php] stopping ...
+2018-04-30 05:47:49 pid:42691 Workerman[listen.php] has been stopped

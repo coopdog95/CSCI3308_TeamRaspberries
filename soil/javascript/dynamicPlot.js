@@ -10,18 +10,25 @@
   scope), which will be called by the stream when the arduino
   (or whatever connects to the socket) is called.
 */
+//-----------------------------------------------------------------------------
 var chart;
 var dataPoints;
+var data_humidity;
+var data_temperature;
+var data_date;
+var data_time;
+var updateChart = function (humidity,temperature,date,time) {};
+var line_chart_TEMP;
+var line_chart_HUMI;
+var dataPointsTEMP;
+var dataPointsHUMI;
 //-----------------------------------------------------------------------------
 window.onload = function() {
 //-----------------------------------------------------------------------------     
-  var dataPoints1 = [{y : 22}];
-  var dataPoints2 = [{y : 23}];
-  var dataPoints3 = [{y : 24}];
-  var dataPoints4 = [{y : 25}];
-  var dataPoints5 = [{y : 26}];
-  var dataPoints6 = [{y : 27}];
-  var line_chart_TEMP = new CanvasJS.Chart("chartContainer_TEMP", {
+  dataPointsTEMP = [{y : 0}];
+  dataPointsHUMI = [{y : 0}];
+
+  line_chart_TEMP = new CanvasJS.Chart("chartContainer_TEMP", {
       title : {
         text: "Loading . . ."
       },
@@ -50,47 +57,7 @@ window.onload = function() {
         //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DD0000",
-        dataPoints : dataPoints1
-      },{
-        type: "line",
-        showInLegend: false,
-        name: "Sensor 2",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#00BB00",
-        dataPoints : dataPoints2
-      },{
-        type: "line",
-        showInLegend: false,
-        name: "Sensor 3",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#0000BB",
-        dataPoints : dataPoints3
-      },{
-        type: "line",
-        showInLegend: false,
-        name: "Sensor 4",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#DD00BB",
-        dataPoints : dataPoints4
-      },{
-        type: "line",
-        showInLegend: false,
-        name: "Sensor 5",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#00BBBB",
-        dataPoints : dataPoints5
-      },{
-        type: "line",
-        showInLegend: false,
-        name: "Sensor 6",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#DDBB00",
-        dataPoints : dataPoints6
+        dataPoints : dataPointsTEMP
       }]
   });
 //-----------------------------------------------------------------------------
@@ -108,16 +75,11 @@ window.onload = function() {
       indexLabel: "{y}",
       dataPoints: [
         { label: "sensor1", y: 22 },
-        { label: "sensor2", y: 23 },
-        { label: "sensor3", y: 24 },
-        { label: "sensor4", y: 25 },
-        { label: "sensor5", y: 26 },
-        { label: "sensor6", y: 27 },
       ]
     }]
   });
 //-----------------------------------------------------------------------------
-  var line_chart_HUMI = new CanvasJS.Chart("chartContainer_HUMI", {
+  line_chart_HUMI = new CanvasJS.Chart("chartContainer_HUMI", {
       title : {
         text: "Loading . . ."
       },
@@ -146,47 +108,7 @@ window.onload = function() {
         //markerType: "none",
         //xValueFormatString: "DD MMM, YYYY",
         color: "#DD0000",
-        dataPoints : dataPoints1
-      },{
-        type: "line",
-        showInLegend: true,
-        name: "Sensor 2",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#00BB00",
-        dataPoints : dataPoints2
-      },{
-        type: "line",
-        showInLegend: true,
-        name: "Sensor 3",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#0000BB",
-        dataPoints : dataPoints3
-      },{
-        type: "line",
-        showInLegend: true,
-        name: "Sensor 4",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#DD00BB",
-        dataPoints : dataPoints4
-      },{
-        type: "line",
-        showInLegend: true,
-        name: "Sensor 5",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#00BBBB",
-        dataPoints : dataPoints5
-      },{
-        type: "line",
-        showInLegend: true,
-        name: "Sensor 6",
-        //markerType: "none",
-        //xValueFormatString: "DD MMM, YYYY",
-        color: "#DDBB00",
-        dataPoints : dataPoints6
+        dataPoints : dataPointsHUMI
       }]
   });
 //-----------------------------------------------------------------------------
@@ -204,11 +126,6 @@ window.onload = function() {
       indexLabel: "{y}",
       dataPoints: [
         { label: "sensor1", y: 0.22 },
-        { label: "sensor2", y: 0.23 },
-        { label: "sensor3", y: 0.24 },
-        { label: "sensor4", y: 0.25 },
-        { label: "sensor5", y: 0.26 },
-        { label: "sensor6", y: 0.27 },
       ]
     }]
   });
@@ -234,27 +151,18 @@ window.onload = function() {
   document.getElementById("changeBounds").addEventListener("click", userChangeBounds);
 //-----------------------------------------------------------------------------
   var yVal1 = 25;
-  var yVal2 = 25;
-  var yVal3 = 25;
-  var yVal4 = 25;
-  var yVal5 = 25;
-  var yVal6 = 25;
-  var updateChart = function () {
-    yVal1 = yVal1 + Math.round(2 + Math.random() * (-2 - 2));
-    yVal2 = yVal2 + Math.round(2 + Math.random() * (-2 - 2));
-    yVal3 = yVal3 + Math.round(2 + Math.random() * (-2 - 2));
-    yVal4 = yVal4 + Math.round(2 + Math.random() * (-2 - 2));
-    yVal5 = yVal5 + Math.round(2 + Math.random() * (-2 - 2));
-    yVal6 = yVal6 + Math.round(2 + Math.random() * (-2 - 2));
-    dataPoints1.push({y : yVal1});
-    dataPoints2.push({y : yVal2});
-    dataPoints3.push({y : yVal3});
-    dataPoints4.push({y : yVal4});
-    dataPoints5.push({y : yVal5});
-    dataPoints6.push({y : yVal6});
+  updateChart = function (humidity,temperature,date,time) {
+    data_humidity = Number(humidity);
+    data_temperature = Number(temperature);
+    data_date = date;
+    data_time = time;
 
-    yValsTEMP = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6]
-    yValsHUMI = [yVal1,yVal2,yVal3,yVal4,yVal5,yVal6]
+    yVal1 = yVal1 + Math.round(2 + Math.random() * (-2 - 2));
+    dataPointsTEMP.push({y : data_temperature});
+    dataPointsHUMI.push({y : data_humidity});
+
+    yValsTEMP = [yVal1]
+    yValsHUMI = [yVal1]
 
     var d = new Date();
     var month = (d.getMonth() < '10') ? ('0' + d.getMonth()) : d.getMonth();
@@ -275,6 +183,7 @@ window.onload = function() {
       dps[i] = {label: "Sensor "+(i+1) , y: yValsTEMP[i], color: sensorColor};
       dpsh[i] = {label: "Sensor "+(i+1) , y: yValsHUMI[i]/100, color: sensorColor};
     }
+
     bar_chart_TEMP.options.data[0].dataPoints = dps;
     bar_chart_TEMP.options.title.text = "Live Temperature Readings";
     bar_chart_HUMI.options.data[0].dataPoints = dpsh;
@@ -286,8 +195,14 @@ window.onload = function() {
     bar_chart_HUMI.render();
   };
 //-----------------------------------------------------------------------------
-  setInterval(function(){updateChart()}, 1000);
 }
+
+// // use this to view the whole database. 
+// con.connect(function(err) {
+//   con.query("SELECT id FROM markers", function (err, result, fields) {
+//     console.log(result);
+//   });
+// });
 
 
 ////Global definition of updateChart, callable from anywhere in home.php
