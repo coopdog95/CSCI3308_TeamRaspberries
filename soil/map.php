@@ -19,9 +19,6 @@
         body {
           padding-top: 56px;
         }
-        .container{
-          max-width: 970px;
-        }
       }
       #map {
         height: 100%;
