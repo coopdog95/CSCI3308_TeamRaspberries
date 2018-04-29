@@ -7,7 +7,7 @@ $userID = $_SESSION["userID"];
 // }
 
 ?> -->
-
+<!-- this is for the map -->
 <?php 
 $command = escapeshellcmd('tempmap.py');
 $output = shell_exec($command);
@@ -58,6 +58,7 @@ echo $output;
     <script src="/javascript/socket.io.js"></script>
     <script src="/javascript/dynamicPlot.js"></script>
     <script> 
+    
       // var userID = "<?php //echo $userID ?>";
       // var requestedSensorID = 0;
       // // I commented this out so it won't
