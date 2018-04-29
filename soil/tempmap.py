@@ -12,17 +12,7 @@ from mapboxgl.utils import *
 from mapboxgl.viz import * 
 import os
 import html
-import folium
 
-popup = 'Must be on top of the choropleth'
-
-folium.CircleMarker(
-    location=[48, -102],
-    radius=10,
-    fill=True,
-    popup=popup,
-    weight=1,
-).add_to(m)
 
 
 time=datetime.now()
