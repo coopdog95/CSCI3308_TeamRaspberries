@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>PROJECT MAP PAGE</title>
+    <title>PROJECT PAGE</title>
     <!-- Bootstrap core CSS -->
-    <link href="/javascript/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- this is for the on off button -->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -21,12 +21,8 @@
         }
       }
       #map {
-        height: 100%;
+        height: 600px;
         width: 100%;
-        bottom: 2%;
-        position: absolute;
-        max-height: 85%; 
-        width: 80%;
       }
       #floating-panel {
         position: absolute;
@@ -42,43 +38,55 @@
         padding-left: 10px;
       }
       button {
-        margin: 5% auto;
-
+        margin: 0 auto;
       }
     </style>
-    <script src="/javascript/socket.io.js"></script>
+    <script src="dynamicPlot.js"></script>
   </head>
   <body style="overflow: hidden; margin-left: 10%; margin-right: 10%">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
+        <a class="navbar-brand" href="#">Moisture and Temp Data</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav pull-left">
-            <li class="nav-item">
-              <a class="nav-link" href="home.php">Home
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="map.php">Map</a>
-            </li>
-          </ul>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav pull-right"> 
             <li class="nav-item">
-              <a class="nav-link" href="index.php"><img src="resources/userlogin.png" alt="User" style="width:4%; float: right; opacity: 0.5"></a>
+              <a class="nav-link" href="file:///Users/aaronbarge/Desktop/Raspberries/logInPage/longin.html">Log in</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Plant Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log out</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <!-- Page Content -->
+    <div class="row align-items-center">
+      <div id="BarChartContainer_TEMP" class="col-5" style="height: 370px; max-width: 100%; margin-left: auto;"></div>
+      <div id="chartContainer_TEMP" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
+      <div id="BarChartContainer_HUMI" class="col-5" style="height: 370px; max-width: 100%; margin-left: auto;"></div>
+      <div id="chartContainer_HUMI" class="col-6" style="height: 370px; max-width: 100%; margin-right: auto;"></div>
+      <script src="canvasjs.min.js"></script>
+      <button id="changeBounds">Change Color Boundaries</button>
+      
+    </div>
+    
     <!-- This is the drop down links menu -->
-    <div class="row align-items-center" >
+   <div class="row align-items-center" >
       <div class="col-auto" style="background-color: white;"></div>
       <div class="col-auto" style="background-color: white;">
         <div style="background-color: white;" class="dropdown show">
@@ -92,14 +100,14 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
       <!--  pin on off functionality not sure if i want to use this  -->
-        <!--<style>.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }</style>
+        <style>.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }</style>
         <div>
           <input type="checkbox" checked data-toggle="toggle" data-on="Drop<br>Pins" data-off="Stop<br>Droping" data-style="slow">
-        </div> -->
-    <!-- this is the actual map portion of the sight  -->
-    <div id="map">
+        </div> 
+      <!-- this is the actual map portion of the sight  -->
+    <div id="map" style="bottom: 2%; position: absolute; max-height: 50%; width: 80%">
       <script>
         // In the following example, markers appear when the user clicks on the map.
         // The markers are stored in an array.
@@ -114,6 +122,8 @@
           mapTypeId: 'satellite'
         });
         
+        
+        
         // This event listener will call addMarker() when the map is  clicked.
         map.addListener('click', function(event) {
           addMarker(event.latLng);
@@ -123,10 +133,10 @@
         
         // this is might be used to have pop up info when clicking on the markers
         // var contentString = '<div id="content">'+
-        // '<div id="siteNotice">'+
-        // '</div>'+
+          // '<div id="siteNotice">'+
+          // '</div>'+
         // '(last visited June 22, 2009).</p>'+
-        // '</div>'+
+          // '</div>'+
         // '</div>';
         // var infowindow = new google.maps.InfoWindow({
         // content: contentString,
@@ -171,9 +181,11 @@
       </script>
     </div>
     <!-- Bootstrap core JavaScript -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap"> </script>
-    <script src="/javascript/vendor/jquery/jquery.min.js"></script>
-    <script src="/javascript/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqN2YxslDwws1XnI89hc_l_KEO5QCNeSg&callback=initMap">
+    </script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </body>
 </html>

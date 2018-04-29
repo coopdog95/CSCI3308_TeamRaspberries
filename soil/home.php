@@ -7,6 +7,15 @@ $userID = $_SESSION["userID"];
 // }
 
 ?> -->
+
+<?php 
+
+$command = escapeshellcmd('tempmap.py');
+$output = shell_exec($command);
+echo $output;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -97,7 +106,7 @@ $userID = $_SESSION["userID"];
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="map.php">Map</a>
+              <a class="nav-link" href="viz.php">Map</a>
             </li>
           </ul>
         </div>
