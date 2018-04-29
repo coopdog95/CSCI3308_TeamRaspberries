@@ -1,0 +1,3 @@
+{"type": "FeatureCollection", "features": [
+{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-105.263365, 40.006875]}, "properties": {"userID": 666.0, "temp": 24.0, "humidity": 28.0}}
+]}
