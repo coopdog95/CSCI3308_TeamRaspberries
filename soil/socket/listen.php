@@ -61,15 +61,15 @@
 					$result = mysqli_query($link, $query);
 
 					while ($row = mysqli_fetch_assoc($result)) {
-						echo "testDatE: ".$row['testDate']."\n";
-						echo "testTime".$row['testTime']."\n";
-						echo "temp".$row['temp']."\n";
+						// echo "testDatE: ".$row['testDate']."\n";
+						// echo "testTime".$row['testTime']."\n";
+						// echo "temp".$row['temp']."\n";
 
 						$dataVector = Array('testDate' => $row['testDate'],
 											'testTime' => $row['testTime'],
 											'temp' => $row['temp'],
 										    'humidity' => $row['humidity']);
-						$Incoming->emit("data".$ID, $dataVector);
+						$Incoming->emit("data", $dataVector);
 					}
 				}
 				else{

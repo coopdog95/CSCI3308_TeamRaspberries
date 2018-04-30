@@ -55,47 +55,46 @@ echo $output;
         margin: 2% 18%;
       }
     </style>
-    <script src="/javascript/socket.io.js"></script>
-    <script src="/javascript/dynamicPlot.js"></script>
+    <script src="javascript/socket.io.js"></script>
+    <script src="javascript/dynamicPlot.js"></script>
     <script> 
     
-      var userID = "<?php echo $userID ?>";
-      var requestedSensorID = 88;
-      // I commented this out so it won't
-      // open a socket everytime you 
-      // connect while develeloping
+      // // var userID = "<?php echo $userID ?>";
+      // var requestedSensorID = 88;
+      // var cnt = 0;
+      // // I commented this out so it won't
+      // // open a socket everytime you 
+      // // connect while develeloping
 
-      // requires the above socket.io.js file
-      // and dynamicPlot.js's updateChart() 
-      // function
+      // // requires the above socket.io.js file
+      // // and dynamicPlot.js's updateChart() 
+      // // function
 
-      // Port for the stream to connect
-      var streamSocket = io("http://0.0.0.0:3008", { query: "type=consumer&ID="+userID+"&requestedSensorID="+String(requestedSensorID) });
+      // // Port for the stream to connect
+      // var streamSocket = io("http://0.0.0.0:3008", { query: "type=consumer&ID="+userID+"&requestedSensorID="+String(requestedSensorID)
+      // });
 
-      //Initial connection
-      streamSocket.on("connect", function(){
-        console.log("CLIENT: Successfully connected to port 3002");
-        });
+      // //Initial connection
+      // streamSocket.on("connect", function(){
+      //   console.log("CLIENT: Successfully connected to port 3002");
+      // });
 
-      //Ready to accept data on the event "to C1"
-      streamSocket.on("OUTsensor" + requestedSensorID, function(data){
-        console.log("CLIENT: data received: ", data);
-        //Update chart with last bit of stream
-        // updateChart(data);
-      });
+      // //Ready to accept data on the event "to C1"
+      // streamSocket.on("OUTsensor" + requestedSensorID, function(data){
+      //   console.log("CLIENT: data received: ", data);
+      // });
 
-      console.log("data" + userID)
-      streamSocket.on("data" + userID, function(data){
-        // console.log("CLIENT: old data received: ", data["temp"]);
-        updateChart(data["temp"],data["humidity"],data["testDate"],data["testTime"]);
-      });
+      // // console.log("data" + userID)
+      // streamSocket.on("data", function(data){
+      //   updateChart(data["temp"],data["humidity"],data["testDate"],data["testTime"]);
+      //   console.log(cnt++);
+      // });
 
+      // window.onbeforeunload = function () {
+      //   streamSocket.emit('end');
+      // };
 
-      window.onbeforeunload = function () {
-            streamSocket.emit('end');
-        };
-
-
+      //renderCharts();
     </script>
   </head>
 
