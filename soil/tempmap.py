@@ -15,15 +15,14 @@ import html
 
 
 
-time=datetime.now()
 # this will set up the connection with the MySql server. 
-cnx = mysql.connector.connect(user='root', password='',
-                              host='127.0.0.1',
-                              database='Raspberries')
+cnx = mysql.connector.connect(user='proj', password='password.',
+                              host='den1.mysql6.gear.host',
+                              database='proj')
 
 try:
-  cnx = mysql.connector.connect(user='root',
-                                database='Raspberries')
+  cnx = mysql.connector.connect(user='proj',
+                                database='proj')
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")
@@ -54,7 +53,7 @@ token = os.getenv('MAPBOX_ACCESS_TOKEN')
 # In[3]:
 
 
-color_stops2 = [[4.2, 'red']]
+color_stops2 = [[0, 'red']]
 df
 data = df_to_geojson(df, filename="lat_lng_plot.geojson",
              properties=['userID','temp','humidity',],

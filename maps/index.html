@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+	  <title>Plant Map</title>
+	  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	  <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+	  <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+	 	 <style>
+
+	 	 	body {
+			  margin: 0;
+			  padding: 0;
+			  font-family: 'Helvetica Neue', Helvetica, Arial, Sans-serif;
+			}
+
+			#map {
+			  position: absolute;
+			  top: 0;
+			  bottom: 0;
+			  width: 100%
+			}
+
+			h1 {
+			  font-size: 20px;
+			  line-height: 30px;
+			}
+
+			h2 {
+			  font-size: 14px;
+			  line-height: 20px;
+			  margin-bottom: 10px;
+			}
+
+			a {
+			  text-decoration: none;
+			  color: #2dc4b2;
+			}
+
+			#console {
+			  position: absolute;
+			  width: 240px;
+			  margin: 10px;
+			  padding: 10px 20px;
+			  background-color: white;
+			}
+			.session {
+			  margin-bottom: 20px;
+			}
+
+			.row {
+			  height: 12px;
+			  width: 100%;
+			}
+
+			.colors {
+			  background: linear-gradient(to right, #ffffb2, #fed976, #feb24c, #fd8d3c, #f03b20, #bd0026);
+			  margin-bottom: 5px;
+			  /*
+				'#FFFFB2',
+		          1.0, '#FED976',
+		          2.0, '#FEB24C',
+		          3.0, '#FD8D3C',
+		          4.0, '#F03B20',
+		          5.0, '#BD0026'
+			  */
+			}
+
+			.label {
+			  width: 15%;
+			  display: inline-block;
+			  text-align: center;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id='map'></div>
+
+
+		<div id='console'> <!--BOX WITH CONTROLS -->
+			<h1>Your plants on a map!</h1>
+			<p>Click <a href='#'>here </a>to return to Raspberries Site.</p>  <!-- maybe come back to this.. -->
+			<div class='session'>
+			<!-- <h2>Average Adjusted Gross Income Group</h2> -->
+			<div class='row colors'>
+			</div>
+				<div class='row labels'>
+					<div class='label'>1</div>
+					<div class='label'>2</div>
+					<div class='label'>3</div>
+					<div class='label'>4</div>
+					<div class='label'>5</div>
+					<div class='label'>6</div>
+				</div>
+			</div>
+
+			<div class='session' id='sliderbar'>
+				<h2>Year: <label id='yearr'>2005</label></h2>
+				<input id='slider' class='row' type='range' min='2005' max='2015' step='1' />
+			</div>	
+		</div> <!--BOX WITH CONTROLS -->
+
+		
+
+
+		<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiY29vcGVydDkyNSIsImEiOiJjamdmd3l6ZjIwOHFkMzNwNHc5MjRtbTd6In0.GdxOVpiAfQ2WgZgfF_FUbg';
+
+			var map = new mapboxgl.Map({
+			  container: 'map', // container element id
+			  style: 'mapbox://styles/mapbox/light-v9',
+			  center: [-105.25, 40.007], // initial map center in [lon, lat]
+			  zoom: 7
+			});
+			map.on('load', function() {
+
+
+		    map.addLayer({
+		      id: 'REALdata',
+		      type: 'circle',
+		      source: {
+		        type: 'geojson',
+		        data: 'Real_data.geojson' 
+		      },
+		      paint: {
+		        'circle-radius': 5.0,
+		        'circle-color': '#BD0026',
+		        'circle-opacity': 0.9
+		      }
+		    }, 'admin-2-boundaries-dispute');
+
+		    map.addLayer(
+		    {
+		      id: 'FAKEdata',
+		      type: 'circle',
+		      source: {
+		        type: 'geojson',
+		        data: 'Fake_data.geojson' 
+		      },
+		      paint: {
+		        'circle-radius': 5.0,
+		        'circle-color': '#FEB24C',
+		        'circle-opacity': 0.9
+		      }
+		    }, 'admin-2-boundaries-dispute');
+		    
+
+		
+		    
+		     // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
+    map.on('click', 'symbols', function (e) {
+        map.flyTo({center: e.features[0].geometry.coordinates});
+    });
+
+    // Change the cursor to a pointer when the it enters a feature in the 'symbols' layer.
+    map.on('mouseenter', 'symbols', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'symbols', function () {
+        map.getCanvas().style.cursor = '';
+    });
+
+    });
+
+		</script>
+
+		</body>
+</html>
+
+
+

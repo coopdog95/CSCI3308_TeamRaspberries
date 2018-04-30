@@ -169,7 +169,7 @@ function generatePropertyExpression(expressionType, propertyValue, stops, defaul
     
 
     
-        calcCircleColorLegend([[4.2, 'red']] , "userID");
+        calcCircleColorLegend([[0, 'red']] , "userID");
     
     
 
@@ -180,7 +180,7 @@ function generatePropertyExpression(expressionType, propertyValue, stops, defaul
         
         map.addSource("data", {
             "type": "geojson",
-            "data": "lat_lng_plot.geojson",
+            "data": "both_data.geojson",
             "buffer": 1,
             "maxzoom": 14
         });
@@ -211,7 +211,7 @@ function generatePropertyExpression(expressionType, propertyValue, stops, defaul
             "minzoom": 0,
             "paint": {
                 
-                    "circle-color": generatePropertyExpression("interpolate", "userID", [[4.2, 'red']], "grey" ),
+                    "circle-color": generatePropertyExpression("interpolate", "userID", [[0, 'red']], "grey" ),
                     
                 "circle-radius" : generatePropertyExpression('interpolate', 'zoom', [[0,5], [22,10 * 5]]),
                 "circle-stroke-color": "grey",
