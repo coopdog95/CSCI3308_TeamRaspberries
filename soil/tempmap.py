@@ -3,11 +3,17 @@
 
 # In[1]:
 
+
+
+
 from __future__ import print_function
+from gmplot import gmplot
 from datetime import date, datetime, timedelta
 import mysql.connector
 import pandas as pd
 from mysql.connector import errorcode
+from mysql.connector import errorcode
+import mapboxgl
 from mapboxgl.utils import *
 from mapboxgl.viz import * 
 import os
@@ -36,65 +42,173 @@ else:
   # cnx.close()
 
 
-df=pd.read_sql("SELECT * FROM sensorInfo;",cnx)
+# In[ ]:
 
-print(df)
 
-cnx.close()
+help(mapboxgl)
+# dir(mapboxgl)
 
 
 # In[2]:
 
 
-os.environ['MAPBOX_ACCESS_TOKEN']="pk.eyJ1IjoiY29vcGVydDkyNSIsImEiOiJjamdmd3l6ZjIwOHFkMzNwNHc5MjRtbTd6In0.GdxOVpiAfQ2WgZgfF_FUbg"
-token = os.getenv('MAPBOX_ACCESS_TOKEN')
+df=pd.read_sql("SELECT * FROM fake_sensorInfo;",cnx)
+# this is the number of rows of data. 
+# print(len(df.index))
+df.head()
 
 
 # In[3]:
 
 
-color_stops2 = [[0, 'red']]
-df
-data = df_to_geojson(df, filename="lat_lng_plot.geojson",
-             properties=['userID','temp','humidity',],
-             lat='latitude',lon='longitude', precision=50)
+demo=pd.read_sql("SELECT * FROM sensorinfo ORDER BY testTime ASC LIMIT 1;",cnx)
+# this is the number of rows of data. 
+print(len(demo.index))
+demo.head()
 
 
-# In[4]:
+# In[23]:
 
 
-center_lat=df.iat[0,6]
-center_lng=df.iat[0,7]
-print(center_lat,center_lng)
+demo['latitude'] = 40.0092
+demo['longitude'] = -105.26683
 
 
-# In[5]:
+# In[24]:
 
 
-df.iat[1,1]
-df.sort_index()
+demo
 
 
-# In[8]:
+# In[39]:
 
 
-viz = CircleViz('lat_lng_plot.geojson',
+df = df.append(demo, ignore_index=True)
+
+
+# In[40]:
+
+
+df.tail()
+
+
+# In[26]:
+
+
+print('Last Temp is: ',demo.iat[0,3])
+print('Last Humidy is ' ,demo.iat[0,4])
+
+
+# In[41]:
+
+
+# The MySQLCursor class instantiates objects that can execute operations such as SQL statements. Cursor objects interact with the MySQL server using a MySQLConnection object.
+cursor = cnx.cursor()
+
+cnx.close()
+
+
+# In[57]:
+
+
+#color_stops1 = [[4.2, 'green']]
+#color_stops2 = [[4.2, 'red']]
+
+breaks = [10,15,20,25,30,35,40,45,50]
+color_stops = create_color_stops(breaks, colors='YlOrRd')
+
+
+# In[29]:
+
+
+# data = df_to_geojson(df, filename="lat_lng_plot.geojson",
+#              properties=['userID','temp','humidity'],
+#              lat='latitude',lon='longitude', precision=50)
+
+
+# In[55]:
+
+
+Fake = df_to_geojson(df, filename="Fake_data.geojson",
+             properties=['userID','temp','humidity','sensorID'],
+             lat='latitude',lon='longitude', precision=8)
+
+
+# In[31]:
+
+
+
+# Real = df_to_geojson(demo, filename="Real_data.geojson",
+#              properties=['userID','temp','humidity'],
+#              lat='latitude',lon='longitude', precision=50)
+
+
+# In[32]:
+
+
+# this will set the center of the map from the Real data. 
+center_lat_Real = demo.iat[0,6]
+center_lng_Real = demo.iat[0,7]
+print(center_lat_Real,center_lng_Real)
+
+
+# In[33]:
+
+
+# this will set the center of the map from the Fake data. 
+center_lat_fake = df.iat[0,6]
+center_lng_fake = df.iat[0,7]
+print(center_lat_fake,center_lng_fake)
+
+
+# In[34]:
+
+
+os.environ['MAPBOX_ACCESS_TOKEN']="pk.eyJ1IjoiY29vcGVydDkyNSIsImEiOiJjamdmd3l6ZjIwOHFkMzNwNHc5MjRtbTd6In0.GdxOVpiAfQ2WgZgfF_FUbg"
+token = os.getenv('MAPBOX_ACCESS_TOKEN')
+      
+
+
+# In[35]:
+
+
+# viz = CircleViz('Real_data.geojson',
+#                 access_token=token,
+#                 height='400px',
+#                 radius=5,
+#                 color_property='userID',
+#                 color_stops = color_stops1,
+#                 center=[-105, 40],
+#                 stroke_width=0.0,
+#                 zoom=9,
+#                 below_layer = 'waterway-label')
+# #                 style = 'mapbox://styles/mapbox/satellite-v9')
+# viz.show()
+
+
+# In[58]:
+
+
+viz_2 = CircleViz('Fake_data.geojson',
                 access_token=token,
                 height='400px',
                 radius=5,
-                color_property='userID',
-                color_stops = color_stops2,
+                color_property='sensorID',
+                color_stops = color_stops,
+                color_function_type='interpolate',
                 center=[-105, 40],
                 stroke_width=0.0,
                 zoom=9,
-                below_layer = 'waterway-label')
+                below_layer = 'waterway-label'
+                 
+                 )
 #                 style = 'mapbox://styles/mapbox/satellite-v9')
-viz.show()
+viz_2.show()
 
 
-# In[10]:
+# In[59]:
 
 
-with open('viz.php', 'w') as f:
-    f.write(viz.create_html())
+with open('viz_2.html', 'w') as f:
+    f.write(viz_2.create_html())
 
