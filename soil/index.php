@@ -119,7 +119,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="map.php">Map</a>
+              <a class="nav-link" href="viz_2.html">Map</a>
             </li>
           </ul>
         </div>

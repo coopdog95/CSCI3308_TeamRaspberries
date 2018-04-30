@@ -113,7 +113,7 @@ echo $output;
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="viz.php">Map</a>
+              <a class="nav-link" href="viz_2.html">Map</a>
             </li>
           </ul>
         </div>
