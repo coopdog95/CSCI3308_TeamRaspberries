@@ -3827,3 +3827,537 @@ Stack trace:
 2018-05-01 02:58:18 pid:44289 Workerman[listen.php] stopping ...
 2018-05-01 02:58:18 pid:44289 Workerman[listen.php] stopping ...
 2018-05-01 02:58:19 pid:44289 Workerman[listen.php] has been stopped
+2018-05-01 02:59:57 pid:44353 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:00:02 pid:44355 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:00:02 pid:44355 Worker process terminated
+2018-05-01 03:00:02 pid:44353 worker[PHPSocketIO:44355] exit with status 64000
+2018-05-01 03:00:47 pid:44353 Workerman[listen.php] stopping ...
+2018-05-01 03:00:47 pid:44353 Workerman[listen.php] stopping ...
+2018-05-01 03:00:47 pid:44353 Workerman[listen.php] has been stopped
+2018-05-01 03:00:49 pid:44360 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:03:06 pid:44362 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:03:06 pid:44362 Worker process terminated
+2018-05-01 03:03:06 pid:44360 worker[PHPSocketIO:44362] exit with status 64000
+2018-05-01 03:04:30 pid:44367 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #46)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1455): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1404): Workerman\Worker::monitorWorkersForLinux()
+#29 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(468): Workerman\Worker::monitorWorkers()
+#30 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#31 {main}
+2018-05-01 03:04:30 pid:44367 Worker process terminated
+2018-05-01 03:04:30 pid:44360 worker[PHPSocketIO:44367] exit with status 64000
+2018-05-01 03:04:33 pid:44360 Workerman[listen.php] stopping ...
+2018-05-01 03:04:33 pid:44360 Workerman[listen.php] stopping ...
+2018-05-01 03:04:33 pid:44360 Workerman[listen.php] has been stopped
+2018-05-01 03:04:34 pid:44371 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:04:36 pid:44373 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:04:36 pid:44373 Worker process terminated
+2018-05-01 03:04:36 pid:44371 worker[PHPSocketIO:44373] exit with status 64000
+2018-05-01 03:05:31 pid:44375 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #46)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1455): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1404): Workerman\Worker::monitorWorkersForLinux()
+#29 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(468): Workerman\Worker::monitorWorkers()
+#30 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#31 {main}
+2018-05-01 03:05:31 pid:44375 Worker process terminated
+2018-05-01 03:05:31 pid:44371 worker[PHPSocketIO:44375] exit with status 64000
+2018-05-01 03:08:23 pid:44377 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #47)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1455): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1404): Workerman\Worker::monitorWorkersForLinux()
+#29 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(468): Workerman\Worker::monitorWorkers()
+#30 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#31 {main}
+2018-05-01 03:08:23 pid:44377 Worker process terminated
+2018-05-01 03:08:23 pid:44371 worker[PHPSocketIO:44377] exit with status 64000
+2018-05-01 03:09:16 pid:44382 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #48)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1455): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1404): Workerman\Worker::monitorWorkersForLinux()
+#29 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(468): Workerman\Worker::monitorWorkers()
+#30 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#31 {main}
+2018-05-01 03:09:16 pid:44382 Worker process terminated
+2018-05-01 03:09:16 pid:44371 worker[PHPSocketIO:44382] exit with status 64000
+2018-05-01 03:09:33 pid:44371 Workerman[listen.php] stopping ...
+2018-05-01 03:09:33 pid:44371 Workerman[listen.php] stopping ...
+2018-05-01 03:09:33 pid:44371 Workerman[listen.php] has been stopped
+2018-05-01 03:09:35 pid:44387 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:09:50 pid:44389 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:09:50 pid:44389 Worker process terminated
+2018-05-01 03:09:50 pid:44387 worker[PHPSocketIO:44389] exit with status 64000
+2018-05-01 03:09:54 pid:44387 Workerman[listen.php] stopping ...
+2018-05-01 03:09:54 pid:44387 Workerman[listen.php] stopping ...
+2018-05-01 03:09:54 pid:44387 Workerman[listen.php] has been stopped
+2018-05-01 03:09:56 pid:44393 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:13:33 pid:44395 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:13:33 pid:44395 Worker process terminated
+2018-05-01 03:13:33 pid:44393 worker[PHPSocketIO:44395] exit with status 64000
+2018-05-01 03:13:41 pid:44393 Workerman[listen.php] stopping ...
+2018-05-01 03:13:41 pid:44393 Workerman[listen.php] stopping ...
+2018-05-01 03:13:41 pid:44393 Workerman[listen.php] has been stopped
+2018-05-01 03:13:44 pid:44407 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:14:43 pid:44407 Workerman[listen.php] stopping ...
+2018-05-01 03:14:43 pid:44407 Workerman[listen.php] stopping ...
+2018-05-01 03:14:43 pid:44407 Workerman[listen.php] has been stopped
+2018-05-01 03:14:48 pid:44411 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:14:54 pid:44413 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:14:54 pid:44413 Worker process terminated
+2018-05-01 03:14:54 pid:44411 worker[PHPSocketIO:44413] exit with status 64000
+2018-05-01 03:15:20 pid:44415 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #46)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1455): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1404): Workerman\Worker::monitorWorkersForLinux()
+#29 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(468): Workerman\Worker::monitorWorkers()
+#30 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#31 {main}
+2018-05-01 03:15:20 pid:44415 Worker process terminated
+2018-05-01 03:15:20 pid:44411 worker[PHPSocketIO:44415] exit with status 64000
+2018-05-01 03:15:31 pid:44411 Workerman[listen.php] stopping ...
+2018-05-01 03:15:31 pid:44411 Workerman[listen.php] stopping ...
+2018-05-01 03:15:31 pid:44411 Workerman[listen.php] has been stopped
+2018-05-01 03:15:34 pid:44421 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:15:47 pid:44421 Workerman[listen.php] stopping ...
+2018-05-01 03:15:47 pid:44421 Workerman[listen.php] stopping ...
+2018-05-01 03:15:47 pid:44421 Workerman[listen.php] has been stopped
+2018-05-01 03:15:59 pid:44425 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:17:20 pid:44427 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:17:20 pid:44427 Worker process terminated
+2018-05-01 03:17:20 pid:44425 worker[PHPSocketIO:44427] exit with status 64000
+2018-05-01 03:17:30 pid:44425 Workerman[listen.php] stopping ...
+2018-05-01 03:17:30 pid:44425 Workerman[listen.php] stopping ...
+2018-05-01 03:17:30 pid:44425 Workerman[listen.php] has been stopped
+2018-05-01 03:18:21 pid:44463 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:19:20 pid:44465 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:19:20 pid:44465 Worker process terminated
+2018-05-01 03:19:20 pid:44463 worker[PHPSocketIO:44465] exit with status 64000
+2018-05-01 03:19:23 pid:44463 Workerman[listen.php] stopping ...
+2018-05-01 03:19:23 pid:44463 Workerman[listen.php] stopping ...
+2018-05-01 03:19:23 pid:44463 Workerman[listen.php] has been stopped
+2018-05-01 03:19:24 pid:44476 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:19:53 pid:44478 Error: Call to a member function disconnect() on null in /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php:86
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Object(Closure), Array)
+#2 [internal function]: PHPSocketIO\Event\Emitter->emit('end')
+#3 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(307): call_user_func_array(Array, Array)
+#4 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Socket.php(269): PHPSocketIO\Socket->onevent(Array)
+#5 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(202): PHPSocketIO\Socket->onpacket(Array)
+#6 [internal function]: PHPSocketIO\Client->ondecoded(Array)
+#7 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#8 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Parser/Decoder.php(34): PHPSocketIO\Event\Emitter->emit('decoded', Array)
+#9 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Client.php(182): PHPSocketIO\Parser\Decoder->add('2["end"]')
+#10 [internal function]: PHPSocketIO\Client->ondata('2["end"]')
+#11 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#12 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Socket.php(187): PHPSocketIO\Event\Emitter->emit('data', '2["end"]')
+#13 [internal function]: PHPSocketIO\Engine\Socket->onPacket(Array)
+#14 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Event/Emitter.php(91): call_user_func_array(Array, Array)
+#15 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(56): PHPSocketIO\Event\Emitter->emit('packet', Array)
+#16 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transport.php(61): PHPSocketIO\Engine\Transport->onPacket(Array)
+#17 [internal function]: PHPSocketIO\Engine\Transport->onData('42["end"]')
+#18 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php(26): call_user_func(Array, '42["end"]')
+#19 [internal function]: PHPSocketIO\Engine\Transports\WebSocket->onData2(Object(Workerman\Connection\TcpConnection), '42["end"]')
+#20 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Connection/TcpConnection.php(639): call_user_func(Array, Object(Workerman\Connection\TcpConnection), '42["end"]')
+#21 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #45)
+#22 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Events/Select.php(286): call_user_func_array(Array, Array)
+#23 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(2130): Workerman\Events\Select->loop()
+#24 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1323): Workerman\Worker->run()
+#25 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1156): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#26 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(1130): Workerman\Worker::forkWorkersForLinux()
+#27 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/vendor/workerman/workerman/Worker.php(466): Workerman\Worker::forkWorkers()
+#28 /Users/liamkolber/Dropbox/CSCI_3308/PRJOECT_TEST/CSCI3308_TeamRaspberries/soil/socket/listen.php(102): Workerman\Worker::runAll()
+#29 {main}
+2018-05-01 03:19:53 pid:44478 Worker process terminated
+2018-05-01 03:19:53 pid:44476 worker[PHPSocketIO:44478] exit with status 64000
+2018-05-01 03:20:24 pid:44476 Workerman[listen.php] stopping ...
+2018-05-01 03:20:24 pid:44476 Workerman[listen.php] stopping ...
+2018-05-01 03:20:24 pid:44476 Workerman[listen.php] has been stopped
+2018-05-01 03:20:25 pid:44488 Workerman[soil/socket/listen.php] start in DEBUG mode
+2018-05-01 03:23:20 pid:44488 Workerman[listen.php] stopping ...
+2018-05-01 03:23:20 pid:44488 Workerman[listen.php] stopping ...
+2018-05-01 03:23:20 pid:44488 Workerman[listen.php] has been stopped
