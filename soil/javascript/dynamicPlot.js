@@ -11,17 +11,21 @@
   (or whatever connects to the socket) is called.
 */
 //-----------------------------------------------------------------------------
+// Global Variables
 var chart;
 var dataPoints;
 var data_humidity;
 var data_temperature;
 var data_date;
 var data_time;
-var updateChart = function (humidity,temperature,date,time) {};
 var line_chart_TEMP;
 var line_chart_HUMI;
 var dataPointsTEMP;
 var dataPointsHUMI;
+var sensorColorTEMP, sensorColorHUMI;
+var dpsTEMP, dpsHUMI;
+var updateChart = function (humidity,temperature,date,time) {};
+var renderCharts = function() {};
 //-----------------------------------------------------------------------------
 window.onload = function() {
 //-----------------------------------------------------------------------------     
@@ -73,9 +77,10 @@ window.onload = function() {
       type: "column", 
       yValueFormatString: "#,###.## °F",
       indexLabel: "{y}",
-      dataPoints: [
-        { label: "sensor1", y: 22 },
-      ]
+      dataPoints: [{
+        label: "sensor1",
+        y: 1
+      }]
     }]
   });
 //-----------------------------------------------------------------------------
@@ -124,9 +129,10 @@ window.onload = function() {
       type: "column", 
       yValueFormatString: "###.##%",
       indexLabel: "{y}",
-      dataPoints: [
-        { label: "sensor1", y: 0.22 },
-      ]
+      dataPoints: [{
+        label: "Sensor 1",
+        y: 1
+      }]
     }]
   });
 //-----------------------------------------------------------------------------
@@ -150,19 +156,14 @@ window.onload = function() {
   }
   document.getElementById("changeBounds").addEventListener("click", userChangeBounds);
 //-----------------------------------------------------------------------------
-  var yVal1 = 25;
   updateChart = function (humidity,temperature,date,time) {
     data_humidity = Number(humidity);
     data_temperature = Number(temperature);
     data_date = date;
     data_time = time;
-
-    yVal1 = yVal1 + Math.round(2 + Math.random() * (-2 - 2));
+    
     dataPointsTEMP.push({y : data_temperature});
     dataPointsHUMI.push({y : data_humidity});
-
-    yValsTEMP = [yVal1]
-    yValsHUMI = [yVal1]
 
     var d = new Date();
     var month = (d.getMonth() < '10') ? ('0' + d.getMonth()) : d.getMonth();
@@ -174,50 +175,23 @@ window.onload = function() {
     line_chart_TEMP.options.title.text = "Temperature History as of:   " + month + "-" + day + "-" + year + " @ " + hour + ":" + min + ":" + sec;
     line_chart_HUMI.options.title.text = "Humidity History as of:   " + month + "-" + day + "-" + year + " @ " + hour + ":" + min + ":" + sec;
     //-----------------------------------------------------------------------------
-    var sensorColor, deltaY;
-    var dps = bar_chart_TEMP.options.data[0].dataPoints;
-    var dpsh = bar_chart_HUMI.options.data[0].dataPoints;
-    for (var i = 0; i < dps.length; i++) {
-      deltaY = Math.round(2 + Math.random() *(-2-2));
-      sensorColor = (yValsTEMP[i] > upperExtreme || yValsTEMP[i] < lowerExtreme) ? "#DD0000" : (yValsTEMP[i] >= upperMid || yValsTEMP[i] <= lowerMid) ? "#FFCA33" : "#6B8E23";
-      dps[i] = {label: "Sensor "+(i+1) , y: yValsTEMP[i], color: sensorColor};
-      dpsh[i] = {label: "Sensor "+(i+1) , y: yValsHUMI[i]/100, color: sensorColor};
-    }
-
-    bar_chart_TEMP.options.data[0].dataPoints = dps;
+    sensorColorTEMP = (data_temperature > upperExtreme || data_temperature < lowerExtreme) ? "#DD0000" : (data_temperature >= upperMid || data_temperature <= lowerMid) ? "#FFCA33" : "#6B8E23";
+    bar_chart_TEMP.options.data[0].dataPoints = {y: data_temperature, color: sensorColorTEMP};
     bar_chart_TEMP.options.title.text = "Live Temperature Readings";
-    bar_chart_HUMI.options.data[0].dataPoints = dpsh;
-    bar_chart_HUMI.options.title.text = "Live Humidity Readings";
 
-    line_chart_TEMP.render(); 
-    bar_chart_TEMP.render(); 
-    line_chart_HUMI.render();
-    bar_chart_HUMI.render();
+    sensorColorHUMI = (data_humidity > upperExtreme || data_humidity < lowerExtreme) ? "#DD0000" : (data_humidity >= upperMid || data_humidity <= lowerMid) ? "#FFCA33" : "#6B8E23";
+    bar_chart_HUMI.options.data[0].dataPoints = {label: "Sensor 1" , y: data_humidity, color: sensorColorHUMI};
+    bar_chart_HUMI.options.title.text = "Live Humidity Readings";
+    //-----------------------------------------------------------------------------
+    console.log("Humidity: ", bar_chart_HUMI.options.data[0].dataPoints["y"]);
   };
+  renderCharts = function() {
+    line_chart_TEMP.render();
+    line_chart_HUMI.render(); 
+    bar_chart_TEMP.render(); 
+    bar_chart_HUMI.render();
+  }
 //-----------------------------------------------------------------------------
 }
-
-// // use this to view the whole database. 
-// con.connect(function(err) {
-//   con.query("SELECT id FROM markers", function (err, result, fields) {
-//     console.log(result);
-//   });
-// });
-
-
-////Global definition of updateChart, callable from anywhere in home.php
-// var updateChart = function(yVal){
-
-//     var d = new Date();
-//     var month = d.getMonth();
-//     var day = d.getDate();
-//     var year = d.getFullYear();
-//     var hour = d.getHours();
-//     var min = (d.getMinutes() < '10') ? ('0' + d.getMinutes()) : d.getMinutes();
-//     var sec = (d.getSeconds() < '10') ? ('0' + d.getSeconds()) : d.getSeconds();
-//     //var time = d.getTime();
-    
-//   dataPoints.push({y : yVal}); 
-//   chart.options.title.text = "Data as of:   " + month + "-" + day + "-" + year + " @ " + hour + ":" + min + ":" + sec;
-//   chart.render();
-// } 
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
